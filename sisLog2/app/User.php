@@ -31,5 +31,16 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    
+    public function tipo($idtipo)
+      {
+        $resul=TipoUsuario::find($idtipo);
+        if(isset($resul)){
+         return $resul->nombre;
+        }
+        else
+        {
+          return "sin definir";
+        }
+        
+      }
 }
