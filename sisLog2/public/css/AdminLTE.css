@@ -26,6 +26,11 @@ body {
   overflow-x: hidden;
   overflow-y: auto;
 }
+/*asterisco de campo obligatorio*/
+.required:after {
+  content:" *"; 
+  color: red;
+}
 /* Layout */
 .wrapper {
   min-height: 100%;
