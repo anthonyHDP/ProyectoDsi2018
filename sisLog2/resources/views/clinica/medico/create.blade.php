@@ -17,24 +17,24 @@
             {{Form::token()}}
 
             <div class="form-group">
-                <label for="nombre">Nombre</label>
-                <input type="text" name="nombre" class="form-control" placeholder="Nombre...">  
+                <label for="nombre" class="required">Nombre</label>
+                <input type="text" value="{{old('nombre')}}"name="nombre" class="form-control" placeholder="Nombre...">  
             </div>
             <div class="form-group">
-                <label for="especialidad">Especialidad</label>
-                <input type="text" name="especialidad" class="form-control" placeholder="Especialidad...">    
+                <label for="especialidad" class="required">Especialidad</label>
+                <input type="text" value="{{old('especialidad')}}" name="especialidad" class="form-control" placeholder="Especialidad...">    
             </div>
             <div class="form-group">
-                <label for="telefono">Telefono</label>
-                <input type="text" name="telefono" class="form-control" placeholder="Telefono...">    
+                <label for="telefono" class="required">Telefono</label>
+                <input type="text" value="{{old('telefono')}}" name="telefono" class="form-control" placeholder="Telefono...">    
             </div>
             <div class="form-group">
-                <label for="correo">Correo</label>
-                <input type="text" name="correo" class="form-control" placeholder="Correo...">    
+                <label for="correo" class="required">Correo</label>
+                <input type="text" value="{{old('correo')}}" name="correo" class="form-control" placeholder="Correo...">    
             </div>
             <div class="form-group">
                 <label for="direccion">Direccion</label>
-                <input type="text" name="direccion" class="form-control" placeholder="Direccion...">    
+                <input type="text" value="{{old('direccion')}}" name="direccion" class="form-control" placeholder="Direccion...">    
             </div>
             <div class="form-group">
                 <button class="btn btn-primary" type="submit">Guardar</button>

@@ -16,37 +16,60 @@
             {!!Form::open(array('url'=>'clinica/paciente','method'=>'POST','autocomplete'=>'off'))!!}
             {{Form::token()}}
 
+            
             <div class="form-group">
-                <label for="apellido">Apellido</label>
-                <input type="text" name="apellido" class="form-control" placeholder="Apellido...">  
+                <label for="apellido" class="required">Apellido</label>
+                <input type="text" value="{{old('apellido')}}" name="apellido" class="form-control" placeholder="Apellido...">  
             </div>
             <div class="form-group">
-                <label for="nombre">Nombre</label>
-                <input type="text" name="nombre" class="form-control" placeholder="Nombre...">  
+                <label for="nombre" class="required">Nombre</label>
+                <input type="text" value="{{old('nombre')}}"name="nombre" class="form-control" placeholder="Nombre...">  
+            </div>
+            <div class="form-group ">
+                <label for="telefono" class="required">Telefono</label>
+                <input type="text" value="{{old('telefono')}}" name="telefono" class="form-control" placeholder="Telefono...">    
             </div>
             <div class="form-group">
-                <label for="telefono">Telefono</label>
-                <input type="text" name="telefono" class="form-control" placeholder="Telefono...">    
+                <label for="direccion" class="required">Direccion</label>
+                <input type="text" value="{{old('direccion')}}" name="direccion" class="form-control" placeholder="Direccion...">    
             </div>
             <div class="form-group">
-                <label for="direccion">Direccion</label>
-                <input type="text" name="direccion" class="form-control" placeholder="Direccion...">    
+                <label for="fechaNacimiento" class="required">Fecha de Nacimiento</label>
+                <input type="date" value="{{old('fechaNacimiento')}}" name="fechaNacimiento" class="form-control" required="" placeholder="yyyy/mm/dd">    
             </div>
             <div class="form-group">
-                <label for="fechaNacimiento">Fecha de Nacimiento</label>
-                <input type="text" name="fechaNacimiento" class="form-control" placeholder="fecha de Nacimiento...">    
+                <label for="tipoSangre" class="required">Tipo de Sangre</label>
+                <div>
+                    <select class="custom-select" name="tipoSangre" id="tipoSangre">
+                    <option selected value="" >Seleccione una opcion</option>
+                    <option value="OPositivo">O positivo</option> 
+                    <option value="ONegatigo">O negativo</option>
+                    <option value="Negatigo">Negativo</option>
+                    </select>
+                </div>       
             </div>
             <div class="form-group">
-                <label for="tipoSangre">Tipo de Sangre</label>
-                <input type="text" name="tipoSangre" class="form-control" placeholder="Tipo de Sangre...">    
+                <label for="sexo" class="required">Sexo</label>
+                <div>
+                    <select class="custom-select" name="sexo">
+                    <option selected value="" >Seleccione una opcion</option>
+                    <option value="Femenino">Femenino</option> 
+                    <option value="Masculino">Masculino</option>
+                    </select> 
+                </div>   
             </div>
             <div class="form-group">
-                <label for="sexo">Sexo</label>
-                <input type="text" name="sexo" class="form-control" placeholder="Sexo...">    
-            </div>
-            <div class="form-group">
-                <label for="estadoCivil">Estado Civil</label>
-                <input type="text" name="estadoCivil" class="form-control" placeholder="Estado Civil...">    
+                <label for="estadoCivil" class="required">Estado Civil</label>
+                <div>
+                    <select class="custom-select" name="estadoCivil" >
+                    <option selected value="" >Seleccione una opcion</option>
+                    <option value="soltero">Soltero/a</option> 
+                    <option value="casado">Casado/a</option>
+                    <option value="acompanado">Acompanado/a</option>
+                    <option value="viudo">Viudo/a</option>
+                    <option value="divorsiado">Divorsiado/a</option>
+                </select>  
+                </div> 
             </div>
 
             <div class="form-group">

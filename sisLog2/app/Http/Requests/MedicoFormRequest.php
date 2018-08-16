@@ -25,11 +25,18 @@ class MedicoFormRequest extends Request
     {
         return [
             //
-            'nombre' => 'required|max:100',
-            'especialidad' => 'required|max:250',
-            'telefono' => 'required|min:8',
+            'nombre' => 'required|alpha|max:50',
+            'especialidad' => 'required|alpha|max:100',
+            'telefono' => 'required|numeric|min:8',
             'direccion' => 'max:250',
-            'correo' => 'email'
+            'correo' => 'email|unique:users'
         ];
+    }
+
+    public function messages(){
+        return[
+            'telefono.numeric' => 'El campo telefono debe ser numerico.',
+            'direccion.max' => 'La direccion no puede ser mayor a :max caracteres'
+        ]
     }
 }
