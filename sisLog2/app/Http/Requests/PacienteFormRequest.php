@@ -41,5 +41,5 @@ class PacienteFormRequest extends Request
             'telefono.numeric'=> 'El campo telefono debe ser numerico.',
             'direccion.max' => 'La direccion no puede ser mayor a :max caracteres'
         ];
-     
+    }
 }
