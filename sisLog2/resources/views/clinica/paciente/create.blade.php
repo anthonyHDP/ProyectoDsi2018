@@ -27,8 +27,11 @@
             </div>
             <div class="form-group ">
                 <label for="telefono" class="required">Telefono</label>
-                <input type="text" value="{{old('telefono')}}" name="telefono" class="form-control" placeholder="Telefono...">    
+                <input type="text" value="{{old('telefono')}}" name="telefono" class="form-control"  placeholder="Ejemplo 0000 0000" pattern="[0-9]{4}[ ]{1}[0-9]{4}" > 
+                
+
             </div>
+             
             <div class="form-group">
                 <label for="direccion" class="required">Direccion</label>
                 <input type="text" value="{{old('direccion')}}" name="direccion" class="form-control" placeholder="Direccion...">    
@@ -42,9 +45,13 @@
                 <div>
                     <select class="custom-select" name="tipoSangre" id="tipoSangre">
                     <option selected value="" >Seleccione una opcion</option>
-                    <option value="OPositivo">O positivo</option> 
-                    <option value="ONegatigo">O negativo</option>
-                    <option value="Negatigo">Negativo</option>
+                    <option value="O positivo">O positivo</option> 
+                    <option value="O negativo">O negativo</option>
+                    <option value="B RH positivo">B RH positivo</option>
+                    <option value="B RH negativo">B RH negativo</option>
+                    <option value="AB negativo">AB negativo</option>
+                    <option value="AB positivo">AB positivo</option>
+                    <option value="Negativo">Negativo</option>
                     </select>
                 </div>       
             </div>

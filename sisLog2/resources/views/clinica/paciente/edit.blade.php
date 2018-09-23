@@ -34,20 +34,48 @@
             </div>
             <div class="form-group">
                 <label for="fechaNacimiento">Fecha de Nacimiento</label>
-                <input type="text" name="fechaNacimiento" class="form-control" value="{{$paciente->fechaNacimiento}}" placeholder="fecha de Nacimiento...">    
+                <input type="date" name="fechaNacimiento" class="form-control" value="{{$paciente->fechaNacimiento}}" placeholder="fecha de Nacimiento..."> 
+
             </div>
             <div class="form-group">
-                <label for="tipoSangre">Tipo de Sangre</label>
-                <input type="text" name="tipoSangre" class="form-control" value="{{$paciente->tipoSangre}}" placeholder="Tipo de Sangre...">    
+                <label for="tipoSangre" class="required">Tipo de Sangre</label>
+                <div>
+                    <select class="custom-select" name="tipoSangre" value="{{$paciente->tipoSangre}}" id="paciente">
+                    
+                    <option value="O psitivo" <?php if($paciente->tipoSangre=="O positivo") echo "selected" ?>>O positivo</option>
+                    <option value="O negativo" <?php if($paciente->tipoSangre=="O negativo") echo "selected" ?>>O negativo</option>  
+                    <option value="B RH positivo" <?php if($paciente->tipoSangre=="B RH positivo") echo "selected" ?>>B RH positivo</option> 
+                    <option value="B RH negativo" <?php if($paciente->tipoSangre=="B RH negativo") echo "selected" ?>>B RH negativo</option>
+                    <option value="AB positivo" <?php if($paciente->tipoSangre=="AB positivo") echo "selected" ?>>AB positivo</option> 
+                    <option value="AB negativo" <?php if($paciente->tipoSangre=="AB negativo") echo "selected" ?>>AB negativo</option> 
+                    </select>
+                </div>       
             </div>
             <div class="form-group">
-                <label for="sexo">Sexo</label>
-                <input type="text" name="sexo" class="form-control" value="{{$paciente->sexo}}" placeholder="Sexo...">    
+                <label for="sexo" class="required">Sexo</label>
+                <div>
+                    <select class="gris_normal" name="sexo" value="{{$paciente->sexo}}" id="paciente">
+                        
+                        <option value="Femenino" <?php if($paciente->sexo=="Femenino") echo "selected"?>>Femenino</option>
+                    
+                    <option value="Masculino" <?php if($paciente->sexo=="Masculino") echo "selected"?>>Masculino</option>
+                    
+                    </select> 
+                </div>   
             </div>
-            <div class="form-group">
-                <label for="estadoCivil">Estado Civil</label>
-                <input type="text" name="estadoCivil" class="form-control" value="{{$paciente->estadoCivil}}" placeholder="Estado Civil...">    
-            </div>
+             <div class="form-group">
+                <label for="estadoCivil" class="required">Estado Civil</label>
+                <div>
+                    <select class="custom-select" name="estadoCivil" value="{{$paciente->estadoCivil}}" id="paciente">
+                    <option value="Soltero/a" <?php if($paciente->estadoCivil=="Soltero/a") echo "selected" ?>>Soltero/a</option> 
+                    <option value="Casado/a" <?php if($paciente->estadoCivil=="Casado/a") echo "selected" ?>>Casado/a</option>
+                     <option value="Acompanado/a" <?php if($paciente->estadoCivil=="Acompaniado/a") echo "selected" ?>>Acompaniado/a</option>
+                    <option value="viudo/a" <?php if($paciente->estadoCivil=="Viudo/a") echo "selected" ?>>Viudo/a</option>
+                    <option value="Divorsiado/a" <?php if($paciente->estadoCivil=="Divorsiado/a") echo "selected" ?>>Divorsiado/a</option>
+                    
+                </select>  
+                </div> 
+                </div>
 
     		<div class="form-group">
     			<button class="btn btn-primary" type="submit">Guardar</button>
