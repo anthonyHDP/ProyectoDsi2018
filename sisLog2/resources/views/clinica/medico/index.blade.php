@@ -41,6 +41,10 @@
                 </table>
             </div>
             {{$medicos->render()}}
+
+            <hr>
+            &nbsp
+            <a href="{{ url('/seguridad') }}"><button class="btn btn-danger">Regresar</button></a>
         </div>
     </div>
 
