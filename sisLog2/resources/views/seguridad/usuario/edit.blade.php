@@ -89,4 +89,5 @@
             
 		</div>
 	</div>
+<a href="{{URL::action('UsuarioController@index')}}"><button class="btn btn-info">Ver Listado de Usuarios</button></a>
 @endsection

@@ -41,7 +41,14 @@ class UsuarioController extends Controller
     	$usuario->email=$request->get('email');
     	$usuario->password=bcrypt($request->get('password'));
         $usuario->tipoUsuario=$request->get('idtipo');
-    	$usuario->save();
+    	if($usuario->save()){
+
+            return back()->with('msj','Datos Guardados');
+        }else{
+
+            return back()->with('errormsj','Los datos no se guardaron');
+        }
+
     	return Redirect::to('seguridad/usuario');
     }
 
@@ -57,7 +64,13 @@ class UsuarioController extends Controller
     	$usuario->email=$request->get('email');
     	$usuario->password=bcrypt($request->get('password'));
         $usuario->tipoUsuario=$request->get('idtipo');
-    	$usuario->update();
+    	if($usuario->update()){
+             return back()->with('msj','Datos Guardados');
+
+        }else{
+
+            return back()->with('errormsj','Los datos no se guardaron');
+        }
     	return Redirect::to('seguridad/usuario');
 
     }
@@ -65,7 +78,8 @@ class UsuarioController extends Controller
     public function destroy($id)
     {
     	$usuario = DB::table('users')->where('id','=', $id)->delete();
-    	return Redirect::to('seguridad/usuario');
+        return back()->with('msj','Datos Guardados');
+        return Redirect::to('seguridad/usuario');
     }
 
 }
