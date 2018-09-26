@@ -47,7 +47,16 @@ class PacienteController extends Controller
         $paciente->fechaNacimiento=$request->get('fechaNacimiento');
         $paciente->sexo=$request->get('sexo');
         $paciente->estadoCivil=$request->get('estadoCivil');
-    	$paciente->save();
+    	if($paciente->save()){
+
+            return back()->with('msj','Datos Guardados');
+            
+            
+        }else{
+
+            return back()->with('errormsj','Los datos no se guardaron');
+        }   
+
 
     	return Redirect::to('clinica/paciente');
     }
@@ -73,7 +82,15 @@ class PacienteController extends Controller
         $paciente->fechaNacimiento=$request->get('fechaNacimiento');
         $paciente->sexo=$request->get('sexo');
         $paciente->estadoCivil=$request->get('estadoCivil');
-    	$paciente->update();
+    	if($paciente->update()){
+
+            return back()->with('msj','Datos Guardados');
+            
+            
+        }else{
+
+            return back()->with('errormsj','Los datos no se guardaron');
+        }
         
     	return Redirect::to('clinica/paciente');
     }
@@ -81,7 +98,15 @@ class PacienteController extends Controller
     public function destroy($id)
     {
     	$paciente=Paciente::findOrFail($id);
-    	$paciente->delete();
+    	if($paciente->delete()){
+
+            return back()->with('msj','Datos Guardados');
+            
+            
+        }else{
+
+            return back()->with('errormsj','Los datos no se guardaron');
+        }
 
     	return Redirect::to('clinica/paciente');
     }
