@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="{{asset('css/font-awesome.css')}}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{asset('css/AdminLTE.min.css')}}">
+    <!--Fullcalendar-->
+    <link rel="stylesheet" href="{{asset('fullcalendar/fullcalendar.min.css')}}">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="{{asset('css/_all-skins.min.css')}}">
@@ -196,10 +198,35 @@
       
     <!-- jQuery 2.1.4 -->
     <script src="{{asset('js/jQuery-2.1.4.min.js')}}"></script>
+    <!--Fullcalendar-->
+    <script type="text/javascript" src="{{ asset('fullcalendar/lib/moment.min.js') }} "></script>
+    <script type="text/javascript" src="{{ asset('fullcalendar/fullcalendar.min.js') }} "></script>
+    <script type="text/javascript" src="{{ asset('fullcalendar/locale/es.js') }} "></script>
     <!-- Bootstrap 3.3.5 -->
     <script src="{{asset('js/bootstrap.min.js')}}"></script>
     <!-- AdminLTE App -->
     <script src="{{asset('js/app.min.js')}}"></script>
+
+     @yield('scripts')
+      <script>
+                $(function () {
+                  //iCheck for checkbox and radio inputs
+                  $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+                    checkboxClass: 'icheckbox_minimal-blue',
+                    radioClass: 'iradio_minimal-blue'
+                  });
+                  //Red color scheme for iCheck
+                  $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
+                    checkboxClass: 'icheckbox_minimal-red',
+                    radioClass: 'iradio_minimal-red'
+                  });
+                  //Flat red color scheme for iCheck
+                  $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+                    checkboxClass: 'icheckbox_flat-green',
+                    radioClass: 'iradio_flat-green'
+                  });
+                });
+      </script>
     
   </body>
 </html>
