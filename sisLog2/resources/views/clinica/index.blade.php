@@ -69,6 +69,16 @@
             </center>
         </div>
         </div>
+
+        <div class="col-lg-4">
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+            <center>
+            <img src="{{asset('img/expediente.JPG')}}" alt="Generic placeholder image" width="140" height="140">
+            </center>
+            <center><h3>Gestion de Examenes Clinicos</h3></center><center><a href="clinica/examen"><button class="btn btn-success">Entrar</button></a></center>
+        </div>
+        </div>
+
     </div>
     
     
