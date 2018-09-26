@@ -53,7 +53,7 @@
             <img src="{{asset('img/consultaMedica.PNG')}}" alt="Generic placeholder image" width="140" height="140">
             </center>
             <center>
-            <h3>Consulta Medica <a href="#"></center><center><button class="btn btn-success">Entrar</button></a></h3>
+            <h3>Consulta Medica <a href="clinica/consulta"></center><center><button class="btn btn-success">Entrar</button></a></h3>
             </center>
         </div>
         </div>
