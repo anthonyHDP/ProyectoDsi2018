@@ -43,9 +43,17 @@ class MedicoController extends Controller
     	$medico->telefono=$request->get('telefono');
         $medico->correo=$request->get('correo');
         $medico->direccion=$request->get('direccion');
-    	$medico->save();
+    	if($medico->save()){
+
+           return back()->with('msj','Datos Guardados');
+
+        }else{
+
+            return back()->with('errormsj','Los datos no se guardaron');
+        }
 
     	return Redirect::to('clinica/medico');
+
     }
 
     public function show($id)
@@ -66,15 +74,32 @@ class MedicoController extends Controller
         $medico->telefono=$request->get('telefono');
         $medico->correo=$request->get('correo');
         $medico->direccion=$request->get('direccion');
-    	$medico->update();
-        
+    	if($medico->update()){
+           
+           return back()->with('msj','Datos Guardados');
+
+        }else{
+
+            return back()->with('errormsj','Los datos no se guardaron');
+        }
+
+
     	return Redirect::to('clinica/medico');
     }
 
     public function destroy($id)
     {
     	$medico=Medico::findOrFail($id);
-    	$medico->delete();
+
+    	if($medico->delete()){
+
+            return back()->with('msj','Datos Guardados');
+            
+            
+        }else{
+
+            return back()->with('errormsj','Los datos no se guardaron');
+        }
 
     	return Redirect::to('clinica/medico');
     }
