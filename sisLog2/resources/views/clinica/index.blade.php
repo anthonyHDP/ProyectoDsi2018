@@ -18,7 +18,7 @@
             <center>
             <img src="{{asset('img/citasMedicas.PNG')}}" alt="Generic placeholder image" width="140" height="140">
             </center>
-            <center><h3>Gestion de Citas Medicas</h3></center><br><center><a href="#"><button class="btn btn-success">Entrar</button></a></center>
+            <center><h3>Gestion de Citas Medicas</h3></center><br><center><a href="clinica/cita"><button class="btn btn-success">Entrar</button></a></center>
         </div>
         </div>
 
