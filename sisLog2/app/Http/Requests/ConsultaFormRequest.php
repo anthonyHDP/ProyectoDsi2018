@@ -26,7 +26,11 @@ class ConsultaFormRequest extends Request
         return [
             //
             'nombreConsulta' => 'required|max:100',
-            'diagnostico' => 'required|max:100'
+			'tipoConsulta' => 'required|max:100',
+			'fechaConsulta' => 'required|date',
+    	    'idPaciente' => 'required|max:100',
+    	    'idMedico' => 'required|max:100',
+    	    'diagnostico' => 'required|max:400',
         ];
     }
 }

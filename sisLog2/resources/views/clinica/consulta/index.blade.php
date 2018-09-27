@@ -34,7 +34,8 @@
                         <td>{{ $paci->nombre}}</td>
                         <td>{{ $paci->nombreConsulta}}</td>
                         <td>
-                            
+						
+                        <a href="{{URL::action('ConsultaController@edit', $paci->idConsulta)}}"><button class="btn btn-info">Editar</button></a>   
                         <a href="" data-target="#modal-delete-{{$paci->idConsulta}}" data-toggle="modal"><button class="btn btn-danger">Eliminar</button></a>   
                         </td>
                     </tr>
