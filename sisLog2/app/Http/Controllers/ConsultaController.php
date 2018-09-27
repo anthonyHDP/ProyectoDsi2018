@@ -52,6 +52,14 @@ class ConsultaController extends Controller
         $consulta->diagnostico=$request->get('diagnostico');
         $consulta->idPaciente=$request->get('idPaciente');
         $consulta->idMedico=$request->get('idMedico');
+        $consulta->examenFisico=$request->get('examenFisico');
+        $consulta->edadPaciente=$request->get('edadPaciente');
+        $consulta->alturaPaciente=$request->get('alturaPaciente');
+        $consulta->pesoPaciente=$request->get('pesoPaciente');
+        $consulta->alergiasPaciente=$request->get('alergiasPaciente');
+        $consulta->medPaciente=$request->get('medPaciente');
+        $consulta->temPaciente=$request->get('temPaciente');
+        $consulta->presionArtPaciente=$request->get('presionArtPaciente');
 
     	if($consulta->save()){
 
@@ -90,6 +98,15 @@ class ConsultaController extends Controller
         $consulta->diagnostico=$request->get('diagnostico');
         $consulta->idPaciente=$request->get('idPaciente');
         $consulta->idMedico=$request->get('idMedico');
+        $consulta->examenFisico=$request->get('examenFisico');
+        $consulta->edadPaciente=$request->get('edadPaciente');
+        $consulta->alturaPaciente=$request->get('alturaPaciente');
+        $consulta->pesoPaciente=$request->get('pesoPaciente');
+        $consulta->alergiasPaciente=$request->get('alergiasPaciente');
+        $consulta->medPaciente=$request->get('medPaciente');
+        $consulta->temPaciente=$request->get('temPaciente');
+        $consulta->presionArtPaciente=$request->get('presionArtPaciente');
+        
     	if($consulta->update()){
 
             return back()->with('msj','Datos Guardados');

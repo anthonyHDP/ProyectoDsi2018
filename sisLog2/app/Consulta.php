@@ -15,11 +15,19 @@ class Consulta extends Model
 
     protected $fillable = [
     	'nombreConsulta',
-    	'tipoConsulta',
-    	'fechaConsulta',
-    	'idPaciente',
-    	'idMedico',
-    	'diagnostico'
+        'tipoConsulta',
+        'fechaConsulta',
+        'idPaciente',
+        'idMedico',
+        'diagnostico',
+        'examenFisico',
+        'edadPaciente',
+        'pesoPaciente',
+        'alturaPaciente',
+        'alergiasPaciente',
+        'medPaciente',
+        'temPaciente',
+        'presionArtPaciente'
 
     ];
 

@@ -1,70 +1,178 @@
 @extends ('layouts.admin')
 @section ('contenido')
    <div class="row">
-    	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-    		<h3>Editar Consulta: {{$consulta->nombreConsulta}}</h3>
-    		@if (count($errors)>0)
-    		<div class="alert alert-danger">
-    			<ul>
-    			@foreach ($errors->all() as $error)
-    				<li>{{$error}}</li>
-    			@endforeach	
-    			</ul>	
-    		</div>
-    		@endif
-
-    		{!!Form::model($consulta,['method'=>'PATCH','route'=>['clinica.consulta.update',$consulta->idConsulta]])!!}
-    		{{Form::token()}}
-
-    		<div class="form-group">
-                <label for="nombreConsulta">Nombre de Consulta</label>
-                <input type="text" name="nombreConsulta" class="form-control" value="{{$consulta->nombreConsulta}}" placeholder="Nombre de Consulta...">  
-            </div>
-            <div class="form-group">
-                <label for="tipoConsulta">Tipo de Consulta</label>
-                <input type="text" name="tipoConsulta" class="form-control" value="{{$consulta->tipoConsulta}}" placeholder="Tipo de Consulta...">  
-            </div>
-			
-			<div class="form-group">
-			    <label for="idPaciente" class="required">Nombre del Paciente </label>
-			    <select name= "idPaciente" id="idPaciente" class="form-control">
-                @foreach ($paciente as $paciente)
-                    <option value="{{$paciente ['idPaciente']}}">{{$paciente ['nombre']}}
-					</option>
+        <div class="col-lg-10 col-md-6 col-sm-6 col-xs-12">
+            <h3>Editar Consulta: {{$consulta->nombreConsulta}}</h3>
+            @if (count($errors)>0)
+            <div class="alert alert-danger">
+                <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{$error}}</li>
                 @endforeach 
-				
-                </select>
+                </ul>   
             </div>
+            @endif
+
+            {!!Form::model($consulta,['method'=>'PATCH','route'=>['clinica.consulta.update',$consulta->idConsulta]])!!}
+            {{Form::token()}}
+
+            <div class="form-horizontal">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="fechaConsulta" class="col-sm-3 required">Fecha de la Consulta</label>
+                        <div class="col-sm-8">
+                            <input type="date" value="{{$consulta->fechaConsulta}}" name="fechaConsulta" class="form-control" required="" placeholder="yyyy/mm/dd">  
+                        </div>     
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="tipoConsulta" class="col-sm-3 required">Tipo de Consulta </label>
+                        <div class="col-sm-8">
+                            <select name="tipoConsulta" id="input" class="form-control" value="{{$consulta->tipoConsulta}}">
+                            <option value="">Seleccione el tipo de consulta</option>
+                            <option value="consulta general"> Consulta general</option>
+                            <option value="control de embarazo">Control de embarazo</option>
+                            <option value="control de niño">Control de niño</option>
+                            <option value="oftalmologia">Oftalmologia</option>
+                            <option value="dermatologia">Dermatologia</option>
+                        </select>
+                        </div>
+                    </div>  
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="idPaciente" class="col-sm-3 required">Nombre del Paciente </label>
+                        <div class="col-sm-8">
+                            <select name= "idPaciente" id="idPaciente" class="form-control">
+                        <option selected value="" >Seleccione una opcion</option>
+                        @foreach ($paciente as $paciente)
+                            <option value="{{$paciente ['idPaciente']}}">{{$paciente ['nombre']}}
+                            </option>
+                        @endforeach 
+                        </select>
+                        </div>  
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edadPaciente" class=" col-sm-3 required">Edad Paciente </label>
+                        <div class="col-sm-8">
+                            <input type="number" name="edadPaciente" min="0" max="150" step="1" value="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+
+
+            <h4>Historia Clinica</h4>
+            <hr>
+            <div class="form-horizontal">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="nombreConsulta" class="required">Razon de la Consulta</label>
+                        <textarea name="nombreConsulta" value="{{$consulta->nombreConsulta}}"  rows="2.5" cols="20" name="nombreConsulta" class="form-control">    
+                        </textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="pesoPaciente" class="col-sm-3" >Peso</label>
+                        <div class="col-sm-8">
+                            <input type="text" value="{{$consulta->pesoPaciente}}" name="pesoPaciente" class="form-control" placeholder="">  
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="alturaPaciente" class="col-sm-3">Altura</label>
+                        <div class="col-sm-8">
+                            <input type="text" value="{{$consulta->alturaPaciente}}" name="alturaPaciente" class="form-control" placeholder=""> 
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="medPaciente" class="col-sm-3" >Medicamentos prescritos</label>
+                        <div class="col-sm-8">
+                            <input type="text" value="{{$consulta->medPaciente}}" name="medPaciente" class="form-control" placeholder="medicamentos prescritos anteriormente...">  
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="alergiasPaciente" class="col-sm-3">Alergias</label>
+                        <div class="col-sm-8">
+                            <input type="text" value="{{$consulta->alergiasPaciente}}" name="alergiasPaciente" class="form-control" placeholder="alergias del paciente..."> 
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="temPaciente" class="col-sm-3">Temperatura</label>
+                        <div class="col-sm-8">
+                            <input type="text" value="{{$consulta->temPaciente}}" name="temPaciente" class="form-control" placeholder="alergias del paciente..."> 
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="presionArtPaciente" class="col-sm-3">Presion arterial</label>
+                        <div class="col-sm-8">
+                            <input type="text" value="{{$consulta->presionArtPaciente}}" name="presionArtPaciente" class="form-control" placeholder="alergias del paciente..."> 
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+<HR>
+<h4>Resultados</h4>
+<hr>        
+            
+        <div class="form-horizontal">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="idMedico" class=" col-sm-3 required">Nombre del Medico </label>
+                    <div class="col-sm-8">
+                        <select name= "idMedico" id="idMedico" class="form-control">
+                        <option selected value="" >Seleccione una opcion</option>
+                            @foreach ($medico as $medico)
+                            <option value="{{$medico ['idMedico']}}">{{$medico ['nombre']}}
+                            </option>
+                            @endforeach 
+                        </select>
+                    </div>
+                    
+                </div>
+                <div class="form-group ">
+                    <label for="examenFisico" class=" col-sm-3 required">examenFisico</label>
+                    <div class="col-sm-8">
+                        <textarea name="examenFisico" value="{{$consulta->examenFisico}}"  rows="3" cols="30" name="examenFisico" class="form-control">    
+                    </textarea> 
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="form-group ">
+                    <label for="diagnostico" class=" col-sm-3 required">Diagnostico</label>
+                    <div class="col-sm-8">
+                        <textarea name="diagnostico" value="{{$consulta->diagnostico}}"  rows="6" cols="30" name="diagnostico" class="form-control">    
+                    </textarea> 
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>   
+       
+        
+
+
 
             <div class="form-group">
-                <label for="idMedico" class="required">Nombre del Medico </label>
-                <select name= "idMedico" id="idMedico" class="form-control">
-                @foreach ($medico as $medico)
-                    <option value="{{$medico ['idMedico']}}">{{$medico ['nombre']}}
-                    </option>
-                @endforeach 
-    
-                </select>
-            </div>
-			
-            <div class="form-group">
-                <label for="fechaConsulta">Fecha de Consulta</label>
-                <input type="date" name="fechaConsulta" class="form-control" value="{{$consulta->fechaConsulta}}" placeholder="fecha de Consulta..."> 
+                <button class="btn btn-primary" type="submit">Guardar</button>
 
-            </div>
-			<div class="form-group">
-                <label for="diagnostico">Diagnostico</label>
-                <input type="text" name="diagnostico" class="form-control" value="{{$consulta->diagnostico}}" placeholder="Diagnostico...">  
+                <button class="btn btn-danger" type="reset">Cancelar</button>
             </div>
 
+            
+            {!!Form::close()!!}
 
-    		<div class="form-group">
-    			<button class="btn btn-primary" type="submit">Guardar</button>
-    			<button class="btn btn-danger" type="reset">Cancelar</button>
-    		</div>
-    		{!!Form::close()!!}
-
-    	</div>
+        </div>
    </div>
    <a href="{{URL::action('ConsultaController@index')}}"><button class="btn btn-info">Ver Listado de Pacientes</button></a>
 @endsection
