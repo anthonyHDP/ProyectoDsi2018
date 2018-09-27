@@ -35,11 +35,17 @@
 				
                 </select>
             </div>
-			
 
-			
-
-
+            <div class="form-group">
+                <label for="idMedico" class="required">Nombre del Medico </label>
+                <select name= "idMedico" id="idMedico" class="form-control">
+                @foreach ($medico as $medico)
+                    <option value="{{$medico ['idMedico']}}">{{$medico ['nombre']}}
+                    </option>
+                @endforeach 
+    
+                </select>
+            </div>
 			
             <div class="form-group">
                 <label for="fechaConsulta">Fecha de Consulta</label>

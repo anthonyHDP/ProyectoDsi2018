@@ -77,7 +77,7 @@ class ConsultaController extends Controller
 		$medico = Medico:: all();
 	    $paciente = Paciente:: all();
 		
-    	return view("clinica.consulta.edit",["consulta"=>Consulta::findOrFail($id)], compact('paciente'), compact('medico'));
+    	return view("clinica.consulta.edit",["consulta"=>Consulta::findOrFail($id)], compact('paciente'))->with('medico',$medico);
     }
 
     public function update(ConsultaFormRequest $request,$id)
