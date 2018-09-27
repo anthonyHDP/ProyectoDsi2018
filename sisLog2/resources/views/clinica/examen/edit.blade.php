@@ -20,10 +20,12 @@
             <div class="form-group">
             <label for="nombrePaciente">Nombre de Paciente</label>  
             <select name ="nombrePaciente" id="input" class="form-control" >
-                <option value="{{$examen->nombrePaciente}}"">--Escoja el Nombre del Paciente--</option>>
+                <option value="{{$examen->nombrePaciente}}">{{$examen->nombrePaciente}}</option>>
              @foreach($pacientes as $paciente)
-                <option value="{{$paciente['nombre']}}"> {{$paciente['nombre']}}
-                </option>
+                <?php if( ($paciente['nombre']) != ($examen->nombrePaciente) ): ?>
+                <option value="{{$paciente['nombre']}}"> {{$paciente['nombre']}} </option>
+                <?php endif; ?>
+                
              @endforeach  
 
              </select>
@@ -32,10 +34,12 @@
             <div class="form-group">
             <label for="medicoAsignado">Medico Asignado</label>  
             <select name ="medicoAsignado" id="input" class="form-control">
-                <option value="{{$examen->medicoAsignado}}">--Escoja El Medico Asignado--</option>>
+                <option value="{{$examen->medicoAsignado}}">{{$examen->medicoAsignado}}</option>>
              @foreach($medicos as $medico)
-                <option value="{{$medico['nombre']}}"> {{$medico['nombre']}}
-                </option>
+                <?php if( ($medico['nombre']) != ($examen->medicoAsignado) ): ?>
+                <option value="{{$medico['nombre']}}"> {{$medico['nombre']}} </option>
+                <?php endif; ?>                
+                
              @endforeach  
 
              </select>
@@ -45,12 +49,12 @@
                 <label for="tipoExamen">Tipo de Examen </label>
                 <select name="tipoExamen" class=" form-control" >
                     <option value="{{$examen->tipoExamen}}">--Escoja el Tipo de examen--</option>
-                     <option value="Sangre">Sangre</option>
-                     <option value="Orina">Orina</option>
-                     <option value="Heces">Heces</option>
-                     <option value="Hemograma">Hemograma</option>
-                     <option value="Glucosa">Glucosa</option>
-                     <option value="Citologia">Citologia</option>
+                     <option value="Sangre" <?php if($examen->tipoExamen=="Sangre") echo "selected" ?>>Sangre</option>
+                     <option value="Orina" <?php if($examen->tipoExamen=="Orina") echo "selected" ?>>Orina</option>
+                     <option value="Heces" <?php if($examen->tipoExamen=="Heces") echo "selected" ?>>Heces</option>
+                     <option value="Hemograma" <?php if($examen->tipoExamen=="Hemograma") echo "selected" ?>>Hemograma</option>
+                     <option value="Glucosa" <?php if($examen->tipoExamen=="Glucosa") echo "selected" ?>>Glucosa</option>
+                     <option value="Citologia" <?php if($examen->tipoExamen=="Citologia") echo "selected" ?>>Citologia</option>
 
                     
                     
