@@ -19,3 +19,44 @@
     </div>
     {{Form::Close()}}
 </div>
+
+
+@if(session()->has('msj'))
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Sweetalert | Rimorsoft Online</title>
+</head>
+<body>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script type="text/javascript">
+        swal("Procesamiento", "Cita eliminada Exitosamente", "success");
+         
+
+        //Puedes colocar warning, error, success y por último info.
+    </script>
+</body>
+</html>
+@endif
+
+@if(session()->has('errormsj'))
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Sweetalert | Rimorsoft Online</title>
+</head>
+<body>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script type="text/javascript">
+        swal("Error", "En el Procesamiento", "warning");
+         
+
+        //Puedes colocar warning, error, success y por último info.
+    </script>
+</body>
+</html>
+@endif

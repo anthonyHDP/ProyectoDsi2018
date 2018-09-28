@@ -30,6 +30,11 @@ class ConsultaController extends Controller
             ->where('paciente.apellido','LIKE','%'.$query.'%')
             ->orWhere('paciente.nombre','LIKE','%'.$query.'%')
             ->orWhere('consulta.idConsulta','LIKE','%'.$query.'%')
+            ->orWhere('tipoConsulta','LIKE','%'.$query.'%')
+            ->orWhere('nombreConsulta','LIKE','%'.$query.'%')
+            ->orWhere('examenFisico','LIKE','%'.$query.'%')
+            ->orWhere('diagnostico','LIKE','%'.$query.'%')
+            ->orWhere('fechaConsulta','LIKE','%'.$query.'%')
             ->paginate(7);
             return view('clinica.consulta.index',["pacientes"=>$pacientes,"searchText"=>$query,]);
         }
@@ -124,8 +129,19 @@ class ConsultaController extends Controller
     public function destroy($id)
     {
     	$consulta=Consulta::findOrFail($id);
-    	$consulta->delete();
+         if($examen->delete()){
 
-    	return Redirect::to('clinica/consulta');
+            return back()->with('msj','Datos Guardados');
+            return redirect('clinica/consulta');
+            
+        }else{
+
+            return back()->with('errormsj','Los datos no se guardaron');
+             }
+
+
+        return Redirect::to('clinica/consulta');
     }
+    
+    
 }

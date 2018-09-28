@@ -24,6 +24,11 @@ class MedicoController extends Controller
         {
             $query=trim($request->get('searchText'));
             $medicos=DB::table('medico')->where('nombre','LIKE','%'.$query.'%')
+            ->orWhere('idMedico','LIKE','%'.$query.'%')
+            ->orWhere('especialidad','LIKE','%'.$query.'%')
+            ->orWhere('telefono','LIKE','%'.$query.'%')
+            ->orWhere('correo','LIKE','%'.$query.'%')
+            ->orWhere('direccion','LIKE','%'.$query.'%')
             ->orderBy('idMedico','desc')
             ->paginate(7);
             return view('clinica.medico.index',["medicos"=>$medicos,"searchText"=>$query]);

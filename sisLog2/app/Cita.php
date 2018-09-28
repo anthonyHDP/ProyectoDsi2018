@@ -14,4 +14,8 @@ class Cita extends Model
     protected $fillable= [
     	'nombrePaciente','nombreMedico','fechaCita','horaCita','tipoCita','reservacionCita','color'
     ];
+
+    protected $guarded =[
+
+    ];
 }

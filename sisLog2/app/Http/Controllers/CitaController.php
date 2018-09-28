@@ -79,9 +79,26 @@ class CitaController extends Controller
                 $cita->color="#ef8e39";
             }
 
-        $cita->save();
+
+
+             if($cita->save()){
+
+
+            return back()->with('msj','Datos Guardados');
+             return redirect('clinica/cita');
+
+            
+            
+        }else{
+
+            return back()->with('errormsj','Los datos no se guardaron');
+             }
+
         return Redirect::to('clinica/cita');
     }
+
+        
+    
 
     /**
      * Display the specified resource.
@@ -103,7 +120,10 @@ class CitaController extends Controller
     public function edit($id)
     {
         $medicos = Medico::all();
-        return view("clinica.cita.edit",["cita"=>Cita::findOrFail($id)],["medicos"=>$medicos]);
+        
+       return view("clinica.cita.edit",["cita"=>Cita::findOrFail($id)],["medicos"=>$medicos]);
+      
+    
     }
 
     /**
@@ -122,11 +142,21 @@ class CitaController extends Controller
         $cita->horaCita=$request->get('horaCita');
         $cita->tipoCita=$request->get('tipoCita');
         $cita->reservacionCita=$request->get('reservacionCita');
-        $cita->update();
 
-        return view('clinica/cita/index');
+        if($cita->update()){
+
+            return back()->with('msj','Datos Guardados');
+            return redirect('clinica/paciente');
+            
+        }else{
+
+            return back()->with('errormsj','Los datos no se guardaron');
+        }
+        
+        return Redirect::to('clinica/cita');
 
     }
+
        public function delete(){
         //Valor id recibidos via ajax
         $id = $_POST['id'];
@@ -142,7 +172,17 @@ class CitaController extends Controller
     public function destroy($id)
     {
         $cita=Cita::findOrFail($id);
-        $cita->delete();
+        if($cita->delete()){
+
+            return back()->with('msj','Datos Guardados');
+            return redirect('clinica/cita');
+            
+        }else{
+
+            return back()->with('errormsj','Los datos no se guardaron');
+        }
+
+
 
         return Redirect::to('clinica/cita');
     }

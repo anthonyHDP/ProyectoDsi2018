@@ -49,6 +49,8 @@
     </div>
 </div>
 
+<a href="{{ url('/clinica') }}"><button class="btn btn-danger">Regresar</button></a>
+
 <!--Model Para ingresar una cita-->
 {!!Form::open(array('action'=>array('CitaController@store'),'method'=>'POST','autocomplete'=>'off'))!!}
 {{Form::token()}}

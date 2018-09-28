@@ -175,3 +175,42 @@
    <a href="{{URL::action('CitaController@create')}}"><button class="btn btn-success">Cita</button></a>
    <a href="{{URL::action('ConsultaController@index')}}"><button class="btn btn-info">Ver Listado de Consultas</button>
 @endsection
+@if(session()->has('msj'))
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Clinica Medica Betel</title>
+</head>
+<body>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script type="text/javascript">
+        swal("Procesamiento", "Ejecutado Exitosamente", "success");
+         
+
+        //Puedes colocar warning, error, success y por último info.
+    </script>
+</body>
+</html>
+@endif
+
+@if(session()->has('errormsj'))
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Clinica Medica Betel</title>
+</head>
+<body>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script type="text/javascript">
+        swal("Error", "En el Procesamiento", "warning");
+         
+
+        //Puedes colocar warning, error, success y por último info.
+    </script>
+</body>
+</html>
+@endif

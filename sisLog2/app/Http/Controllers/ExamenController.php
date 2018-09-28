@@ -72,6 +72,9 @@ class ExamenController extends Controller
     	return view("clinica.examen.show",["examen"=>Examen::findOrFail($id)]);
     }
 
+
+
+
     public function edit($id)
 
     {

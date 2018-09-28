@@ -7,19 +7,37 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Bienvenido</div>
 
-                <div class="panel-body">
-                    Has iniciado Sesión!
-                    <center>
-                    <h4><a href="{{url('clinica')}}"><button class="btn btn-success">Ir al Menu Principal</button></a></h4>
-                    </center>
+                
+                    <div class="panel-body">
+                        Has iniciado Sesión!
+                        <center>
+                        <?php if((Auth::user()->tipoUsuario)==2): ?>
+                            <h4><a href="{{url('clinica')}}"><button class="btn btn-success">Ir al Menu Principal</button></a></h4>
+                        <?php endif; ?>
 
-                </div>
+                        <?php if((Auth::user()->tipoUsuario)==1): ?>
+                            <h4><a href="{{url('seguridad')}}"><button class="btn btn-success">Ir al Menu Principal</button></a></h4>
+                        <?php endif; ?>
+                        </center>
+
+                    </div>
+
+                    <!--
+                    <div class="panel-body">
+                        Has iniciado Sesión!
+                        <center>
+                        <h4><a href="{{url('seguridad')}}"><button class="btn btn-success">Ir al Menu Principal</button></a></h4>
+                        </center>
+
+                    </div>
+                    -->
 
                 
             </div>
         </div>
     </div>
     
+    <!--
     <div class="row">
         <footer class="main-footer">
                     <div class="pull-right hidden-xs">
@@ -28,5 +46,6 @@
                     
         </footer>
     </div>
+    -->
 </div>
 @endsection

@@ -26,7 +26,7 @@
             </div>
             <div class="form-group">
                 <label for="telefono">Telefono</label>
-                <input type="text" name="telefono" class="form-control" value="{{$paciente->telefono}}" placeholder="Telefono...">    
+                <input type="text" name="telefono" class="form-control" value="{{$paciente->telefono}}" placeholder="Ejemplo 0000 0000" pattern="[0-9]{4}[ ]{1}[0-9]{4}">    
             </div>
             <div class="form-group">
                 <label for="direccion">Direccion</label>

@@ -25,6 +25,12 @@ class PacienteController extends Controller
             $query=trim($request->get('searchText'));
             $pacientes=DB::table('paciente')->where('apellido','LIKE','%'.$query.'%')
             ->orWhere('nombre','LIKE','%'.$query.'%')
+            ->orWhere('telefono','LIKE','%'.$query.'%')
+            ->orWhere('direccion','LIKE','%'.$query.'%')
+            ->orWhere('fechaNacimiento','LIKE','%'.$query.'%')
+            ->orWhere('tipoSangre','LIKE','%'.$query.'%')
+            ->orWhere('sexo','LIKE','%'.$query.'%')
+            ->orWhere('estadoCivil','LIKE','%'.$query.'%')
             ->orderBy('idPaciente','desc')
             ->paginate(7);
             return view('clinica.paciente.index',["pacientes"=>$pacientes,"searchText"=>$query]);
