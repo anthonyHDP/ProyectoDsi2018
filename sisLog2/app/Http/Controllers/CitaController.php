@@ -29,12 +29,13 @@ class CitaController extends Controller
             $medicos=Medico::all();
             $query=trim($request->get('searchText'));
             $citas=DB::table('cita')->where('nombrePaciente','LIKE','%'.$query.'%')
+            ->orWhere('tipoCita','LIKE','%'.$query.'%')
             ->orderBy('id','desc')
-            ->paginate(7);
+            ->paginate(4);
             
-            $citas = Cita::all();
+            $citaC = Cita::all();
             
-            return view('clinica.cita.index', ["citas"=>$citas, "medicos"=>$medicos, "searchText"=>$query]);
+            return view('clinica.cita.index', ["citas"=>$citas, "citaC"=>$citaC,"medicos"=>$medicos, "searchText"=>$query]);
         }  
 
     }

@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
             <h3>Control de Citas <a href="cita/create"><button class="btn btn-success">Nuevo</button></a></h3>
-  <!--  @include('clinica.cita.search')-->
+    @include('clinica.cita.search')
         </div>
     </div>
 
@@ -33,7 +33,7 @@
                     @endforeach
                 </table>
             </div>
-            
+            {{$citas->render()}}
         </div>
         </div>
 
@@ -207,7 +207,7 @@
             editable: true,
 
             events : [
-                @foreach($citas as $cita)
+                @foreach($citaC as $cita)
                 {
                     id : '{{ $cita->id }}',
                     title : '{{ $cita->tipoCita }}',
