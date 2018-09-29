@@ -43,9 +43,12 @@
                 </table>
             </div>
             {{$examen->render()}}
+            <hr>
+            &nbsp
+            <a href="{{ url('/clinica') }}"><button class="btn btn-danger">Regresar</button></a>
         </div>
     </div>
- <a href="{{URL::action('HomeController@index')}}"><button class="btn btn-info">Ver Menu Principal</button></a>   
+    
 
 
 @endsection

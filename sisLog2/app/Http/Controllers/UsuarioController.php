@@ -9,6 +9,7 @@ use sisLog2\Http\Requests;
 use sisLog2\User;
 use Illuminate\Support\Facades\Redirect;
 use sisLog2\Http\Requests\UsuarioFormRequest;
+use sisLog2\Http\Requests\UsuarioFormRequest2;
 use DB;
 
 class UsuarioController extends Controller
@@ -57,7 +58,7 @@ class UsuarioController extends Controller
     	return view("seguridad.usuario.edit",["usuario"=>User::findOrFail($id)]);
     }
 
-    public function update(UsuarioFormRequest $request, $id)
+    public function update(UsuarioFormRequest2 $request, $id)
     {
     	$usuario=User::findOrFail($id);
     	$usuario->name=$request->get('name');

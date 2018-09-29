@@ -68,7 +68,7 @@
         </div>
    </div>
 
-
+ <a href="{{URL::action('CitaController@index')}}"><button class="btn btn-info">Ver Listado de Citas</button></a>
 @endsection
 
 

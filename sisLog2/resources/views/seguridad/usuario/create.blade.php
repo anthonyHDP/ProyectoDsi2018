@@ -69,7 +69,7 @@
                               <label for="idtipo" class="col-md-4 control-label">Tipo de Usuario</label>                              
                              
                                <select id="idtipo" name="idtipo" class="form-control">
-                                
+                                    <option value="">Seleccione el tipo de Usuario</option>
                                     <option value="1 ">Administrador</option>
                                     <option value="2 ">Doctor</option>
                                 </select>                        

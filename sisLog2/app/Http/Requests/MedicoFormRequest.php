@@ -27,7 +27,7 @@ class MedicoFormRequest extends Request
             //
             'nombre' => 'required|max:50',
             'especialidad' => 'required|max:100',
-            'telefono' => 'required|min:9',
+            'telefono' => 'required|min:8',
             'direccion' => 'max:250',
             'correo' => 'email',
         ];

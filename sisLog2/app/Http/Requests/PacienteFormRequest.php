@@ -25,8 +25,8 @@ class PacienteFormRequest extends Request
     {
         return [
             //
-            'nombre' => 'required|alpha|max:50',
-            'apellido' => 'required|alpha|max:50',
+            'nombre' => 'required|max:50',
+            'apellido' => 'required|max:50',
             'fechaNacimiento' => 'required|date',
             'telefono' => 'required|min:8',
             'direccion' => 'required|max:250',

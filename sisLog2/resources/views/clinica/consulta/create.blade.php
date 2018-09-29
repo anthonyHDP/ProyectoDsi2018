@@ -105,13 +105,13 @@
             <div class="form-group">
                 <label for="temPaciente" class="col-sm-3">Temperatura</label>
                 <div class="col-sm-8">
-                    <input type="text" value="{{old('temPaciente')}}" name="temPaciente" class="form-control" placeholder="alergias del paciente..."> 
+                    <input type="text" value="{{old('temPaciente')}}" name="temPaciente" class="form-control" placeholder="Temperatura del paciente..."> 
                 </div>
             </div>
             <div class="form-group">
                 <label for="presionArtPaciente" class="col-sm-3">Presion arterial</label>
                 <div class="col-sm-8">
-                    <input type="text" value="{{old('presionArtPaciente')}}" name="presionArtPaciente" class="form-control" placeholder="alergias del paciente..."> 
+                    <input type="text" value="{{old('presionArtPaciente')}}" name="presionArtPaciente" class="form-control" placeholder="Presion del paciente..."> 
                 </div>
             </div>
         </div>
@@ -175,6 +175,8 @@
    <a href="{{URL::action('CitaController@create')}}"><button class="btn btn-success">Cita</button></a>
    <a href="{{URL::action('ConsultaController@index')}}"><button class="btn btn-info">Ver Listado de Consultas</button>
 @endsection
+
+
 @if(session()->has('msj'))
 <!DOCTYPE html>
 <html>

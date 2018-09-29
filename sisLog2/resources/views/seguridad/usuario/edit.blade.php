@@ -35,7 +35,8 @@
                             <label for="email" class="col-md-4 control-label">E-Mail</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ $usuario->email }}" required>
+                                <input id="email" type="email" class="form-control" name="email" value="{{ $usuario->email }}" readonly="readonly">
+                                
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -71,9 +72,9 @@
                               <label for="idtipo" class="col-md-4 control-label">Tipo de Usuario</label>                              
                              
                                <select id="idtipo" name="idtipo" class="form-control">
-                                
-                                    <option value="1 ">Administrador</option>
-                                    <option value="2 ">Doctor</option>
+                                    <option value="">Seleccione el tipo de Usuario</option>    
+                                    <option value="1 " <?php if($usuario->tipoUsuario=="1 ") echo "selected" ?>>Administrador</option>
+                                    <option value="2 " <?php if($usuario->tipoUsuario=="2 ") echo "selected" ?>>Doctor</option>
                                 </select>                        
                     
                         </div>
@@ -91,3 +92,43 @@
 	</div>
 <a href="{{URL::action('UsuarioController@index')}}"><button class="btn btn-info">Ver Listado de Usuarios</button></a>
 @endsection
+
+@if(session()->has('msj'))
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Clinica Medica Betel</title>
+</head>
+<body>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script type="text/javascript">
+        swal("Procesamiento", "Ejecutado Exitosamente", "success");
+         
+
+        //Puedes colocar warning, error, success y por último info.
+    </script>
+</body>
+</html>
+@endif
+
+@if(session()->has('errormsj'))
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Clinica Medica Betel</title>
+</head>
+<body>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script type="text/javascript">
+        swal("Error", "En el Procesamiento", "error");
+         
+
+        //Puedes colocar warning, error, success y por último info.
+    </script>
+</body>
+</html>
+@endif

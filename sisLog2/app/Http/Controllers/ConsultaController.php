@@ -129,7 +129,7 @@ class ConsultaController extends Controller
     public function destroy($id)
     {
     	$consulta=Consulta::findOrFail($id);
-         if($examen->delete()){
+         if($consulta->delete()){
 
             return back()->with('msj','Datos Guardados');
             return redirect('clinica/consulta');
