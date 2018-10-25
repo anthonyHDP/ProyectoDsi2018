@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use sisLog2\Http\Requests;
 use sisLog2\Paciente;
+use PDF;
 use Illuminate\Support\Facades\Redirect;
 use sisLog2\Http\Requests\PacienteFormRequest;
 use DB;
@@ -69,7 +70,10 @@ class PacienteController extends Controller
 
     public function show($id)
     {
-    	return view("clinica.paciente.show",["paciente"=>Paciente::findOrFail($id)]);
+        $paciente=Paciente::findOrFail($id);
+        $pdf = PDF::loadView("clinica.paciente.vista",["paciente"=>$paciente]);
+        return $pdf->stream($paciente->nombre);
+    	//return view("clinica.paciente.show",["paciente"=>Paciente::findOrFail($id)]);
     }
 
     public function edit($id)
