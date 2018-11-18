@@ -50,6 +50,7 @@ Route::group(['middleware' => 'usuarioDoctor'], function () {
 	Route::resource('clinica/examen','ExamenController');
 	Route::resource('clinica/cita','CitaController');
 	Route::resource('clinica/consulta','ConsultaController');
+	Route::resource('clinica/pago','PagoController');
 
 
 	Route::resource('clinica','IndiceController@index');

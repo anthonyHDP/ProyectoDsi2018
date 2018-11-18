@@ -8,6 +8,8 @@ use sisLog2\Http\Requests;
 use sisLog2\Consulta;
 use sisLog2\Paciente;
 use sisLog2\Medico;
+use sisLog2\Pago;
+use sisLog2\TipoConsulta;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Redirect;
 use sisLog2\Http\Requests\ConsultaFormRequest;
@@ -65,6 +67,17 @@ class ConsultaController extends Controller
         $consulta->medPaciente=$request->get('medPaciente');
         $consulta->temPaciente=$request->get('temPaciente');
         $consulta->presionArtPaciente=$request->get('presionArtPaciente');
+
+
+        //Crea el registro de pago al momento de crear la consulta
+        $pago = new Pago;
+        $pago->estado='Pendiente';
+        $pago->idPaciente=$request->get('idPaciente');
+        $pago->idTipoConsulta=$request->get('tipoConsulta');
+        $aCancelar=DB::table('tipoConsulta')->select('precio')->where('idTipoConsulta',$pago->idTipoConsulta)->first();
+        $pago->total= $aCancelar->precio;
+        $pago->fechaEmitido=$request->get('fechaConsulta');
+        $pago->save();
 
     	if($consulta->save()){
 

@@ -25,8 +25,8 @@ class MedicoFormRequest extends Request
     {
         return [
             //
-            'nombre' => 'required|max:50',
-            'especialidad' => 'required|max:100',
+            'nombre' => 'required|max:50|regex:/^[\pL\s\-]+$/u',
+            'especialidad' => 'required|max:100|regex:/^[\pL\s\-]+$/u',
             'telefono' => 'required|min:8',
             'direccion' => 'max:250',
             'correo' => 'email',
