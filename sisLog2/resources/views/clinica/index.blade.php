@@ -65,7 +65,7 @@
             <img src="{{asset('img/recetas.png')}}" alt="Generic placeholder image" width="140" height="140">
             </center>
             <center>
-            <h3>Resetas Medicas <a href="#"></center><center><button class="btn btn-success">Entrar</button></a></h3>
+            <h3>Resetas Medicas <a href="clinica/receta"></center><center><button class="btn btn-success">Entrar</button></a></h3>
             </center>
         </div>
         </div>

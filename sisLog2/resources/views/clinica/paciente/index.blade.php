@@ -4,8 +4,11 @@
 
     <div class="row">
         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-            <h3>Listado de Expediente de paciente <a href="paciente/create"><button class="btn btn-success">Nuevo Expediente</button></a></h3>
+            <h3>Crear Expediente de paciente <a href="paciente/create"><button class="btn btn-success">Nuevo Expediente</button></a></h3>
+
             @include('clinica.paciente.search')
+            <hr>
+            <h3>Listado de Expediente de paciente</h3>
         </div>
     </div>
 
