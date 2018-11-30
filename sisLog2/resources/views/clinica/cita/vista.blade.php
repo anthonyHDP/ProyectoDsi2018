@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Reporte de Cita</title>
-    <link rel="stylesheet" href="C:\Users\USER\Desktop\Nueva carpeta\ProyectoDsi2018\sisLog2\public\css\style.css" media="all" />
+    
     <style type="text/css">
 
       hr {
