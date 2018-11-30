@@ -28,9 +28,10 @@
             <center>
             <img src="{{asset('img/incapacidad.png')}}" alt="Generic placeholder image" width="140" height="140">
             </center>
-            <center><h3>Gestion de Incapacidad</h3></center><br><center><a href="#"><button class="btn btn-success">Entrar</button></a></center>
+            <center><h3>Gestion de Incapacidad Medica</h3></center><br><center><a href="clinica/incapacidad"><button class="btn btn-success">Entrar</button></a></center>
         </div>
         </div>
+
     </div>
     <br>
     <div class="row">

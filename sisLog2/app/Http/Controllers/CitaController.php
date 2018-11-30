@@ -7,6 +7,7 @@ use sisLog2\Http\Requests;
 use sisLog2\Cita;
 use sisLog2\Medico;
 use sisLog2\Paciente;
+use PDF;
 use Calendar;
 use Illuminate\Support\Facades\Redirect;
 use sisLog2\Http\Requests\CitaFormRequest;
@@ -107,9 +108,12 @@ class CitaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+     public function show($id)
     {
-        return view("clinica.cita.show",["cita"=>Cita::findOrFail($id)]);
+        $cita=Cita::findOrFail($id);
+        $pdf = PDF::loadView("clinica.cita.vista",["cita"=>$cita]);
+        return $pdf->stream($cita->nombrePaciente);
+        //return view("clinica.paciente.show",["paciente"=>Paciente::findOrFail($id)]);
     }
 
     /**
