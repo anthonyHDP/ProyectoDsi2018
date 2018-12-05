@@ -42,20 +42,20 @@ class ConsultaController extends Controller
         }
     }
 
-	
-	    public function create()
+    
+        public function create()
     {
-		$paciente = Paciente:: all();
-		$medico = Medico:: all();
-    	return view("clinica.consulta.create", compact('paciente'), compact('medico')); 
+        $paciente = Paciente:: all();
+        $medico = Medico:: all();
+        return view("clinica.consulta.create", compact('paciente'), compact('medico')); 
     }
-	
-	    public function store(ConsultaFormRequest $request)
+    
+        public function store(ConsultaFormRequest $request)
     {
-    	$consulta = new Consulta;
-    	$consulta->nombreConsulta=$request->get('nombreConsulta');
-    	$consulta->tipoConsulta=$request->get('tipoConsulta'); 
-    	$consulta->fechaConsulta=$request->get('fechaConsulta');
+        $consulta = new Consulta;
+        $consulta->nombreConsulta=$request->get('nombreConsulta');
+        $consulta->tipoConsulta=$request->get('tipoConsulta'); 
+        $consulta->fechaConsulta=$request->get('fechaConsulta');
         $consulta->diagnostico=$request->get('diagnostico');
         $consulta->idPaciente=$request->get('idPaciente');
         $consulta->idMedico=$request->get('idMedico');
@@ -72,14 +72,14 @@ class ConsultaController extends Controller
         //Crea el registro de pago al momento de crear la consulta
         $pago = new Pago;
         $pago->estado='Pendiente';
-        $pago->idPaciente=$request->get('idPaciente');
-        $pago->idTipoConsulta=$request->get('tipoConsulta');
-        $aCancelar=DB::table('tipoConsulta')->select('precio')->where('idTipoConsulta',$pago->idTipoConsulta)->first();
-        $pago->total= $aCancelar->precio;
+        $pago->idPaciente=$request->get('idPaciente');      
+        $aCancelar=DB::table('tipoconsulta')->where('nombreConsulta','LIKE','%'.$consulta->tipoConsulta.'%')->first();
+        $pago->total=$aCancelar->precio;
+        $pago->idTipoConsulta=$aCancelar->idTipoConsulta;
         $pago->fechaEmitido=$request->get('fechaConsulta');
         $pago->save();
 
-    	if($consulta->save()){
+        if($consulta->save()){
 
             return back()->with('msj','Datos Guardados');
             
@@ -90,29 +90,29 @@ class ConsultaController extends Controller
         }   
 
 
-    	return Redirect::to('clinica/consulta');
+        return Redirect::to('clinica/consulta');
     }
 
     public function show($id)
     {
-    	return view("clinica.consulta.show",["consulta"=>Consulta::findOrFail($id)]);
+        return view("clinica.consulta.show",["consulta"=>Consulta::findOrFail($id)]);
     }
 
     public function edit($id)
     {
-		$medico = Medico:: all();
-	    $paciente = Paciente:: all();
-		
-    	return view("clinica.consulta.edit",["consulta"=>Consulta::findOrFail($id)], compact('paciente'))->with('medico',$medico);
+        $medico = Medico:: all();
+        $paciente = Paciente:: all();
+        
+        return view("clinica.consulta.edit",["consulta"=>Consulta::findOrFail($id)], compact('paciente'))->with('medico',$medico);
     }
 
     public function update(ConsultaFormRequest $request,$id)
     {
-		
-    	$consulta=Consulta::findOrFail($id);
-    	$consulta->nombreConsulta=$request->get('nombreConsulta');
-    	$consulta->tipoConsulta=$request->get('tipoConsulta'); 
-    	$consulta->fechaConsulta=$request->get('fechaConsulta');
+        
+        $consulta=Consulta::findOrFail($id);
+        $consulta->nombreConsulta=$request->get('nombreConsulta');
+        $consulta->tipoConsulta=$request->get('tipoConsulta'); 
+        $consulta->fechaConsulta=$request->get('fechaConsulta');
         $consulta->diagnostico=$request->get('diagnostico');
         $consulta->idPaciente=$request->get('idPaciente');
         $consulta->idMedico=$request->get('idMedico');
@@ -125,7 +125,7 @@ class ConsultaController extends Controller
         $consulta->temPaciente=$request->get('temPaciente');
         $consulta->presionArtPaciente=$request->get('presionArtPaciente');
         
-    	if($consulta->update()){
+        if($consulta->update()){
 
             return back()->with('msj','Datos Guardados');
             
@@ -135,13 +135,13 @@ class ConsultaController extends Controller
             return back()->with('errormsj','Los datos no se guardaron');
         }
         
-    	return Redirect::to('clinica/consulta');
+        return Redirect::to('clinica/consulta');
     }
-	
+    
 
     public function destroy($id)
     {
-    	$consulta=Consulta::findOrFail($id);
+        $consulta=Consulta::findOrFail($id);
          if($consulta->delete()){
 
             return back()->with('msj','Datos Guardados');
