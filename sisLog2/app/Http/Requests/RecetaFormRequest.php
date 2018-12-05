@@ -29,15 +29,8 @@ class RecetaFormRequest extends Request
             'medicamentos' => 'required|max:500',
             'fecha' => 'required|max:50',
             'nombrePaciente' => 'required|max:100',
-            //
-            /**'nombre' => 'required|max:50',
-            'apellido' => 'required|max:50',
-            'fechaNacimiento' => 'required|max:30',
-            'telefono' => 'required|min:8',
-            'direccion' => 'required|max:150',
-            'tipoSangre' => 'required|max:50',
-            'sexo' => 'required|max:50',
-            'estadoCivil' => 'required|max:50'**/
+            'idMedico' => 'required',
+            
         ];
     }
 }

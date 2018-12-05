@@ -8,12 +8,12 @@
 		<div class="form-group">
 			<label for="nombrePaciente" class="col-sm-3 required">Nombre Paciente:</label>
 			<div class="col-sm-8">
-				<input type="text" value="{{$paciente->apellido}}, {{$paciente->nombre}}" name="nombrePaciente" class="form-control">
+				<input type="text" value="{{$paciente->apellido}}, {{$paciente->nombre}}" name="nombrePaciente" class="form-control" readonly=”readonly”>
 			</div>
 		</div>
 
 		<div class="form-group">
-			<label for="idMedico" class="col-sm-3 required">Doctor:</label>
+			<label for="idMedico" class="col-sm-3 required" class="required">Doctor:</label>
 			<div class="col-sm-8">
 				<select name= "idMedico" id="idMedico" class="form-control">
 				<option selected value="" >Seleccione una opcion</option>
@@ -42,14 +42,14 @@
                         return date('Y') - $edad;
                     }
 					?>
-				<input type="text" name="" value="<?php echo obtener_edad_fecha_nacimiento($paciente->fechaNacimiento); ?>" class="form-control">
+				<input type="text" name="" value="<?php echo obtener_edad_fecha_nacimiento($paciente->fechaNacimiento); ?>" class="form-control" readonly=”readonly”>
 			</div>
 		</div>
 
 		<div class="form-group">
 			<label for="" class="col-sm-3 required">Sexo:</label>
 				<div class="col-sm-8">
-				<input type="text" value="{{$paciente->sexo}}"  name="" class="form-control">
+				<input type="text" value="{{$paciente->sexo}}"  name="" class="form-control" readonly=”readonly”>
 			</div>
 		</div>
 
@@ -65,7 +65,7 @@
 <div class="form-horizontal" style="background-color: yellow">
 	<div class="col-sm-6">
 		<div class="form-group">
-			<label for="medicamentos" class="col-sm-3 required">Medicamentos:</label>
+			<label for="medicamentos" class="col-sm-3 required" class="required">Medicamentos:</label>
 			
 				<textarea class="form-control" rows="10" placeholder="Escriba el medicamentos" name="medicamentos"></textarea>
 			
@@ -74,7 +74,7 @@
 		<div class="form-group">
 			<label for="fecha" class="col-sm-3 required">Fecha:</label>
 			<div class="col-sm-8">
-				<input type="text" name="fecha" class="form-control" value="{{$now->format('d/m/Y  h:i  A')}}">
+				<input type="text" name="fecha" class="form-control" value="{{$now->format('d/m/Y  h:i  A')}}" readonly=”readonly”>
 			</div>
 		</div>
 
@@ -83,7 +83,7 @@
 
 	<div class="col-sm-6">
 		<div class="form-group">
-			<label for="indicaciones" class="col-sm-3 required">Indicaciones:</label>
+			<label for="indicaciones" class="col-sm-3 required" class="required">Indicaciones:</label>
 			
 				<textarea class="form-control" rows="10" placeholder="Escriba las indicaciones de la receta medica" name="indicaciones"></textarea>
 			
@@ -92,7 +92,7 @@
 		<div class="form-group">
 			<label for="idPaciente" class="col-sm-3 required">Numero de paciente:</label>
 			<div class="col-sm-8">
-				<input type="text" value="{{$paciente->idPaciente}}"  name="idPaciente" class="form-control">
+				<input type="text" value="{{$paciente->idPaciente}}"  name="idPaciente" class="form-control" readonly=”readonly”>
 			</div>
 		</div>
 	</div>
