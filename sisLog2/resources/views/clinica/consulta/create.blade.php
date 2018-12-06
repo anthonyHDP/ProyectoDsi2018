@@ -31,7 +31,7 @@
                     <select name="tipoConsulta" id="input" class="form-control" value="{{ old('tipoConsulta') }}">
                     <option value="">Seleccione el tipo de consulta</option>
                     <option value="consulta general"> Consulta general</option>
-                    <option value="control de embarazo">Control de embarazo</option>
+                    <option value="Control Embarazo">Control Embarazo</option>
                     <option value="control de niño">Control de niño</option>
                     <option value="oftalmologia">Oftalmologia</option>
                     <option value="dermatologia">Dermatologia</option>
