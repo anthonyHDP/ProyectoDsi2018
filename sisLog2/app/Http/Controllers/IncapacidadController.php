@@ -101,8 +101,7 @@ class IncapacidadController extends Controller
     public function update(IncapacidadFormRequest $request,$id)
     {
     	$incapacidad=Incapacidad::findOrFail($id);
-        $incapacidad->nombrePaciente=$request->get('nombrePaciente');
-        $incapacidad->medicoAsignado=$request->get('medicoAsignado');
+        
         $incapacidad->idPaciente=$request->get('idPaciente');
         $incapacidad->idMedico=$request->get('idMedico');
       
