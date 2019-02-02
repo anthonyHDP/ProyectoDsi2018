@@ -29,6 +29,8 @@ class IncapacidadController extends Controller
             $pacientes=DB::table('paciente')->join('incapacidad','incapacidad.idPaciente','=','paciente.idPaciente')
             ->orWhere('paciente.nombre','LIKE','%'.$query.'%')
             ->orWhere('paciente.apellido','LIKE','%'.$query.'%')
+            ->orWhere('paciente.sexo','LIKE','%'.$query.'%')
+            ->orWhere('paciente.telefono','LIKE','%'.$query.'%')  
             ->orWhere('incapacidad.idIncapacidad','LIKE','%'.$query.'%')
             ->orWhere('causaPaciente','LIKE','%'.$query.'%')
             ->orWhere('diasIncapacidad','LIKE','%'.$query.'%')

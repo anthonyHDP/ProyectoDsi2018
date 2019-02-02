@@ -29,10 +29,13 @@ class ExamenController extends Controller
             $pacientes=DB::table('paciente')->join('examen','examen.idPaciente','=','paciente.idPaciente')
             ->orWhere('paciente.nombre','LIKE','%'.$query.'%')
             ->orWhere('paciente.apellido','LIKE','%'.$query.'%')
+            ->orWhere('paciente.sexo','LIKE','%'.$query.'%')
+            ->orWhere('paciente.telefono','LIKE','%'.$query.'%')
             ->orWhere('examen.idExamen','LIKE','%'.$query.'%')
             ->orWhere('tipoExamen','LIKE','%'.$query.'%')
             ->orWhere('fechaControl','LIKE','%'.$query.'%')
             ->orWhere('horaControl','LIKE','%'.$query.'%')
+            ->orWhere('resultado','LIKE','%'.$query.'%')
             ->orderBy('idExamen','desc')
             ->paginate(7);
             return view('clinica.examen.index',["pacientes"=>$pacientes,"searchText"=>$query]);

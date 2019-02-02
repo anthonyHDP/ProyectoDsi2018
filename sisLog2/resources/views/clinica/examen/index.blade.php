@@ -18,6 +18,8 @@
                         <th>Id</th>
                         <th>Nombres</th>
                         <th>Apellidos</th>
+                        <th>Sexo</th>
+                        <th>Telefono</th>
                         <th>Tipo de Examen</th>
                         <th>Resultado de Examen</th>
                         <th>Fecha de Control</th>
@@ -29,6 +31,8 @@
                         <td>{{ $paci->idExamen}}</td>
                         <td>{{ $paci->nombre}}</td>
                         <td>{{ $paci->apellido}}</td>
+                        <td>{{ $paci->sexo}}</td>
+                        <td>{{ $paci->telefono}}</td>
                         <td>{{ $paci->tipoExamen}}</td>
                         <td>{{ $paci->resultado}}</td>
                         <td>{{ $paci->fechaControl}}</td>
