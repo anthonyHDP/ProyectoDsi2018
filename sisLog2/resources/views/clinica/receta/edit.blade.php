@@ -100,7 +100,7 @@
 
 <hr>
 		<div class="form-group">
-			<button class="btn btn-primary" type="submit">guardar</button>
+			<button class="btn btn-primary" type="submit">Guardar</button>
 		</div>
 		
 {!!Form::close()!!}

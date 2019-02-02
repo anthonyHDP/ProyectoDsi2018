@@ -36,7 +36,7 @@
                         <td>
                             <a href="{{URL::action('ExamenController@edit', $paci->idExamen)}}"><button class="btn btn-info">Editar</button></a>
 
-                           <a type="button" href="{{URL::action('ExamenController@show', $paci->idExamen)}}" value="Reporte" target="_blank" onClick="document.formulario.action='verPDF.php'; document.formuario.submit();"><button class="btn btn-warning">Reporte</button></a></a>
+                          
 
                            
 
