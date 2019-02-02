@@ -15,8 +15,9 @@ class Examen extends Model
 
     protected $fillable = [
     
-    	'nombrePaciente',
-    	'medicoAsignado',
+    	'idMedico',
+        'idPaciente',
+        
     	'tipoExamen',
     	'resultado',
         'fechaControl',

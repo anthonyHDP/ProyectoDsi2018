@@ -19,11 +19,11 @@
            
 
             <div class="form-group">
-            <label for="nombrePaciente">Nombre de Paciente</label>  
-            <select name ="nombrePaciente" id="input" class="form-control" value="{{old('nombrePaciente')}}">
+            <label for="idPaciente">Nombres,Apellidos de Paciente</label>  
+            <select name ="idPaciente" id="idPaciente" class="form-control" value="{{old('idPaciente')}}">
                 <option value="">--Escoja el Nombre del Paciente--</option>>
              @foreach($pacientes as $paciente)
-                <option value="{{$paciente['nombre']}}"> {{$paciente['nombre']}}
+                <option value="{{$paciente ['idPaciente']}},{{$paciente ['apellido']}}"> {{$paciente['nombre']}}, {{$paciente['apellido']}}
                 </option>
              @endforeach  
 
@@ -31,11 +31,11 @@
             </div>
 
             <div class="form-group">
-            <label for="medicoAsignado">Medico Asignado</label>  
-            <select name ="medicoAsignado" id="input" class="form-control" value="{{old('medicoAsignado')}}">
+            <label for="idMedico">Medico Asignado</label>  
+            <select name ="idMedico" id="input" class="form-control" value="{{old('idMedico')}}">
                 <option value="">--Escoja El Medico Asignado--</option>>
              @foreach($medicos as $medico)
-                <option value="{{$medico['nombre']}}"> {{$medico['nombre']}}
+                <option value="{{$medico['idMedico']}}"> {{$medico['nombre']}}
                 </option>
              @endforeach  
 

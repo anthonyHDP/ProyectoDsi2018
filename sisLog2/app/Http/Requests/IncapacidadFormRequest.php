@@ -25,9 +25,10 @@ class IncapacidadFormRequest extends Request
     {
         return [
             //
-            'nombrePaciente' => 'required|max:100',
-            'medicoAsignado'=>'required|max:100',
-            'edadPaciente'=>'required|max:70',
+            'idPaciente' => 'required|max:100',
+            'idMedico' => 'required|max:100',
+            
+            
             'causaPaciente'=>'required|max:600',
             'diasIncapacidad'=>'required|max:70',
             'fechaIncapacidad' =>'required|max:30',

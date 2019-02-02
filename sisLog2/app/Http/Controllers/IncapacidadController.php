@@ -26,17 +26,17 @@ class IncapacidadController extends Controller
         if ($request)
         {
             $query=trim($request->get('searchText'));
-            $incapacidad=DB::table('incapacidad')->where('nombrePaciente','LIKE','%'.$query.'%')
-            ->orWhere('idIncapacidad','LIKE','%'.$query.'%')
-            ->orWhere('medicoAsignado','LIKE','%'.$query.'%')
-            ->orWhere('edadPaciente','LIKE','%'.$query.'%')
+            $pacientes=DB::table('paciente')->join('incapacidad','incapacidad.idPaciente','=','paciente.idPaciente')
+            ->orWhere('paciente.nombre','LIKE','%'.$query.'%')
+            ->orWhere('paciente.apellido','LIKE','%'.$query.'%')
+            ->orWhere('incapacidad.idIncapacidad','LIKE','%'.$query.'%')
             ->orWhere('causaPaciente','LIKE','%'.$query.'%')
             ->orWhere('diasIncapacidad','LIKE','%'.$query.'%')
             ->orWhere('fechaIncapacidad','LIKE','%'.$query.'%')
             ->orWhere('horaIncapacidad','LIKE','%'.$query.'%')
             ->orderBy('idIncapacidad','desc')
             ->paginate(7);
-            return view('clinica.incapacidad.index',["incapacidad"=>$incapacidad,"searchText"=>$query]);
+            return view('clinica.incapacidad.index',["pacientes"=>$pacientes,"searchText"=>$query]);
         }
     }
 
@@ -44,16 +44,21 @@ class IncapacidadController extends Controller
     {
         $pacientes=Paciente::all();
         $medicos=Medico::all(); 
+       
         $now=Carbon::now();
     	return view("clinica.incapacidad.create",["pacientes"=>$pacientes],["medicos"=>$medicos])->with('now',$now);
+
+
+
     }
 
     public function store(IncapacidadFormRequest $request)
     {
     	$incapacidad = new Incapacidad;
-    	$incapacidad->nombrePaciente=$request->get('nombrePaciente');
-        $incapacidad->medicoAsignado=$request->get('medicoAsignado');
-        $incapacidad->edadPaciente=$request->get('edadPaciente');
+    	
+        $incapacidad->idPaciente=$request->get('idPaciente');
+        $incapacidad->idMedico=$request->get('idMedico');
+       
         $incapacidad->causaPaciente=$request->get('causaPaciente');
         $incapacidad->diasIncapacidad=$request->get('diasIncapacidad');
         $incapacidad->fechaIncapacidad=$request->get('fechaIncapacidad');
@@ -74,7 +79,9 @@ class IncapacidadController extends Controller
     public function show($id)
     {
         $incapacidad=Incapacidad::findOrFail($id);
-        $pdf = PDF::loadView("clinica.incapacidad.vista",["incapacidad"=>$incapacidad]);
+        $pacientes=Paciente::all();
+        $medico=Medico::all();
+        $pdf = PDF::loadView("clinica.incapacidad.vista",["incapacidad"=>$incapacidad],["pacientes"=>$pacientes],["medico"=>$medico]);
         return $pdf->stream($incapacidad->nombrePaciente);
         //return view("clinica.paciente.show",["paciente"=>Paciente::findOrFail($id)]);
     }
@@ -96,7 +103,9 @@ class IncapacidadController extends Controller
     	$incapacidad=Incapacidad::findOrFail($id);
         $incapacidad->nombrePaciente=$request->get('nombrePaciente');
         $incapacidad->medicoAsignado=$request->get('medicoAsignado');
-        $incapacidad->edadPaciente=$request->get('edadPaciente');
+        $incapacidad->idPaciente=$request->get('idPaciente');
+        $incapacidad->idMedico=$request->get('idMedico');
+      
         $incapacidad->causaPaciente=$request->get('causaPaciente');
         $incapacidad->diasIncapacidad=$request->get('diasIncapacidad');
         $incapacidad->fechaIncapacidad=$request->get('fechaIncapacidad');
@@ -131,4 +140,5 @@ class IncapacidadController extends Controller
 
     	return Redirect::to('clinica/examen');
     }
+
 }

@@ -281,6 +281,27 @@ footer .end {
 }
 
   </style>
+<?php 
+        use sisLog2\Medico;
+        use sisLog2\Paciente;
+
+        $medico=Medico::findOrFail($incapacidad->idMedico);
+        $paciente=Paciente::findOrFail($incapacidad->idPaciente);
+
+        function obtener_edad_fecha_nacimiento($fecha_nac){
+        $fecha_nac = strtotime($fecha_nac);
+        $edad = date('Y', $fecha_nac);
+        if (($mes = (date('m') - date('m', $fecha_nac))) < 0) {
+        $edad++;
+        } elseif ($mes == 0 && date('d') - date('d', $fecha_nac) < 0) {
+         $edad++;
+         }
+         return date('Y') - $edad;
+        }
+
+    ?>
+
+  
 </head>
 
 <body>
@@ -318,9 +339,9 @@ footer .end {
     <div class="container">
       <div class="details clearfix">
         <div class="client middle">
-          <p class="name Justified">El Medico de Nombre  <u><b>{{$incapacidad->medicoAsignado}} </b></u>
-          hace constar que el paciente <u><b>{{$incapacidad->nombrePaciente}} </b></u>
-          con <u><b>{{$incapacidad->edadPaciente}} años</b></u> de edad 
+          <p class="name Justified">El Medico de Nombre  <u><b>{{$medico->nombre}} </b></u>
+          hace constar que el paciente <u><b>{{$paciente->nombre}},{{$paciente->apellido}} </b></u>
+          con <u><b><?php echo obtener_edad_fecha_nacimiento($paciente->fechaNacimiento); ?> años</b></u> de edad 
           adolece de <u><b>{{$incapacidad->causaPaciente}}</b></u>. 
           Por lo que se le incapacita por: <u><b>{{$incapacidad->diasIncapacidad}} dias</b></u>.
           Para los usos que fueren convenientes se extendiente la presente incapacidad en la fecha <u><b>{{$incapacidad->fechaIncapacidad}}</b></u> y hora <u><b>{{$incapacidad->horaIncapacidad}}</b></u>.</p>

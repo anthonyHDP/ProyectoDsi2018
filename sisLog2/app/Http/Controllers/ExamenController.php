@@ -8,6 +8,7 @@ use sisLog2\Medico;
 use sisLog2\Paciente;
 use sisLog2\Http\Requests;
 use sisLog2\Examen;
+use PDF;
 use Illuminate\Support\Facades\Redirect;
 use sisLog2\Http\Requests\ExamenFormRequest;
 use DB;
@@ -25,15 +26,16 @@ class ExamenController extends Controller
         if ($request)
         {
             $query=trim($request->get('searchText'));
-            $examen=DB::table('examen')->where('nombrePaciente','LIKE','%'.$query.'%')
-            ->orWhere('idExamen','LIKE','%'.$query.'%')
-            ->orWhere('medicoAsignado','LIKE','%'.$query.'%')
+            $pacientes=DB::table('paciente')->join('examen','examen.idPaciente','=','paciente.idPaciente')
+            ->orWhere('paciente.nombre','LIKE','%'.$query.'%')
+            ->orWhere('paciente.apellido','LIKE','%'.$query.'%')
+            ->orWhere('examen.idExamen','LIKE','%'.$query.'%')
             ->orWhere('tipoExamen','LIKE','%'.$query.'%')
             ->orWhere('fechaControl','LIKE','%'.$query.'%')
             ->orWhere('horaControl','LIKE','%'.$query.'%')
             ->orderBy('idExamen','desc')
             ->paginate(7);
-            return view('clinica.examen.index',["examen"=>$examen,"searchText"=>$query]);
+            return view('clinica.examen.index',["pacientes"=>$pacientes,"searchText"=>$query]);
         }
     }
 
@@ -48,8 +50,8 @@ class ExamenController extends Controller
     public function store(ExamenFormRequest $request)
     {
     	$examen = new Examen;
-    	$examen->nombrePaciente=$request->get('nombrePaciente');
-        $examen->medicoAsignado=$request->get('medicoAsignado');
+    	$examen->idPaciente=$request->get('idPaciente');
+        $examen->idMedico=$request->get('idMedico');
         $examen->tipoExamen=$request->get('tipoExamen');
         $examen->fechaControl=$request->get('fechaControl');
         $examen->horaControl=$request->get('horaControl');
@@ -69,7 +71,13 @@ class ExamenController extends Controller
 
     public function show($id)
     {
-    	return view("clinica.examen.show",["examen"=>Examen::findOrFail($id)]);
+    	$examen=Examen::findOrFail($id);
+        $pdf = PDF::loadView("clinica.examen.vista",["examen"=>$examen]);
+        return $pdf->stream($examen->nombrePaciente);
+        //return view("clinica.paciente.show",["paciente"=>Paciente::findOrFail($id)]);
+
+
+        
     }
 
 
@@ -88,8 +96,8 @@ class ExamenController extends Controller
     {
     	
         $examen=Examen::findOrFail($id);
-        $examen->nombrePaciente=$request->get('nombrePaciente');
-        $examen->medicoAsignado=$request->get('medicoAsignado');
+        $examen->idPaciente=$request->get('idPaciente');
+        $examen->idMedico=$request->get('idMedico');
         $examen->tipoExamen=$request->get('tipoExamen');
         $examen->fechaControl=$request->get('fechaControl');
         $examen->horaControl=$request->get('horaControl');

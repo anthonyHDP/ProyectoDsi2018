@@ -16,33 +16,39 @@
                 <table class="table table-striped table-bordered table-condensed table-hover">
                     <thead>
                         <th>Id</th>
-                        <th>Nombre</th>
-                        <th>Medico Asignado</th>
+                        <th>Nombres</th>
+                        <th>Apellidos</th>
                         <th>Tipo de Examen</th>
                         <th>Resultado de Examen</th>
                         <th>Fecha de Control</th>
                         <th>Hora de Control</th>
                         <th>Opciones</th>
                     </thead>
-                    @foreach ($examen as $exam)
+                    @foreach ($pacientes as $paci)
                     <tr>
-                        <td>{{ $exam->idExamen}}</td>
-                        <td>{{ $exam->nombrePaciente}}</td>
-                        <td>{{ $exam->medicoAsignado}}</td>
-                        <td>{{ $exam->tipoExamen}}</td>
-                        <td>{{ $exam->resultado}}</td>
-                        <td>{{ $exam->fechaControl}}</td>
-                        <td>{{ $exam->horaControl}}</td>
+                        <td>{{ $paci->idExamen}}</td>
+                        <td>{{ $paci->nombre}}</td>
+                        <td>{{ $paci->apellido}}</td>
+                        <td>{{ $paci->tipoExamen}}</td>
+                        <td>{{ $paci->resultado}}</td>
+                        <td>{{ $paci->fechaControl}}</td>
+                        <td>{{ $paci->horaControl}}</td>
                         <td>
-                            <a href="{{URL::action('ExamenController@edit', $exam->idExamen)}}"><button class="btn btn-info">Editar</button></a>
-                            <a href="" data-target="#modal-delete-{{$exam->idExamen}}" data-toggle="modal"><button class="btn btn-danger">Eliminar</button></a>
+                            <a href="{{URL::action('ExamenController@edit', $paci->idExamen)}}"><button class="btn btn-info">Editar</button></a>
+
+                           <a type="button" href="{{URL::action('ExamenController@show', $paci->idExamen)}}" value="Reporte" target="_blank" onClick="document.formulario.action='verPDF.php'; document.formuario.submit();"><button class="btn btn-warning">Reporte</button></a></a>
+
+                           
+
+
+                            <a href="" data-target="#modal-delete-{{$paci->idExamen}}" data-toggle="modal"><button class="btn btn-danger">Eliminar</button></a>
                         </td>
                     </tr>
                     @include('clinica.examen.modal')
                     @endforeach
                 </table>
             </div>
-            {{$examen->render()}}
+            {{$pacientes->render()}}
             <hr>
             &nbsp
             <a href="{{ url('/clinica') }}"><button class="btn btn-danger">Regresar</button></a>

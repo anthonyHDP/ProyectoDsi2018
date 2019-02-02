@@ -29,7 +29,7 @@
                         <td>{{ $rece->nombrePaciente}}</td>
                         <td>{{ $rece->fecha}}</td>
                         <td>
-                            <a href="{{URL::action('InforeceController@show', $rece->idReceta)}}"><button class="btn btn-warning">Ver</button></a>
+                            <a type="button" href="{{URL::action('InforeceController@show', $rece->idReceta)}}" value="Ver Reporte" target="_blank" onClick="document.formulario.action='verPDF.php'; document.formuario.submit();"><button class="btn btn-warning">Ver</button></a></a>
                             <a href="{{URL::action('InforeceController@edit', $rece->idReceta)}}"><button class="btn btn-info">Editar</button></a>
                             <a href="" data-target="#modal-delete-{{$rece->idReceta}}" data-toggle="modal"><button class="btn btn-danger">Eliminar</button></a>
                         </td>

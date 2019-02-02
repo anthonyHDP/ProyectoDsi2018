@@ -25,8 +25,8 @@ class ExamenFormRequest extends Request
     {
         return [
             //
-            'nombrePaciente' => 'required|max:100',
-            'medicoAsignado'=>'required|max:100',
+            'idPaciente' => 'required|max:100',
+            'idMedico' => 'required|max:100',
             'tipoExamen'=>'required|max:70',
             'resultado'=>'required|max:600',
             'fechaControl' =>'required|max:30',

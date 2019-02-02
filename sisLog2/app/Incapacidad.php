@@ -15,9 +15,9 @@ class Incapacidad extends Model
 
     protected $fillable = [
     
-    	'nombrePaciente',
-    	'medicoAsignado',
-    	'edadPaciente',
+        'idMedico',
+        'idPaciente',
+    	
     	'causaPaciente',
         'diasIncapacidad',
         'fechaIncapacidad',

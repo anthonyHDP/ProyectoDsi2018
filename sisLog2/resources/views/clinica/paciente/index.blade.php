@@ -40,7 +40,11 @@
                         <td>{{ $paci->estadoCivil}}</td>
                         <td>
                             <a href="{{URL::action('PacienteController@edit', $paci->idPaciente)}}"><button class="btn btn-info">Editar</button></a>
-                            <a href="{{URL::action('PacienteController@show', $paci->idPaciente)}}"><button class="btn btn-warning" >Reporte</button></a>
+                            
+                            <a type="button" href="{{URL::action('PacienteController@show', $paci->idPaciente)}}" value="Reporte" target="_blank" onClick="document.formulario.action='verPDF.php'; document.formuario.submit();"><button class="btn btn-warning">Reporte</button></a></a>
+
+
+
                             <a href="" data-target="#modal-delete-{{$paci->idPaciente}}" data-toggle="modal"><button class="btn btn-danger">Eliminar</button></a>
                         </td>
                     </tr>

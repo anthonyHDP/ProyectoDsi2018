@@ -16,34 +16,41 @@
                 <table class="table table-striped table-bordered table-condensed table-hover">
                     <thead>
                         <th>Id</th>
-                        <th>Nombre</th>
-                        <th>Medico Asignado</th>
+                        <th>Nombres</th>
+                        <th>Apellidos</th>
+                        <th>Sexo</th>
+                        <th>Telefono</th>
                         <th>Causa de la incapacidad</th>
                         <th>Dias de Incapacidad</th>
                         <th>Fecha de Incapacidad</th>
                         <th>Hora de Incapacidad</th>
                         <th>Opciones</th>
                     </thead>
-                    @foreach ($incapacidad as $incap)
+                    @foreach ($pacientes as $paci)
                     <tr>
-                        <td>{{ $incap->idIncapacidad}}</td>
-                        <td>{{ $incap->nombrePaciente}}</td>
-                        <td>{{ $incap->medicoAsignado}}</td>
-                        <td>{{ $incap->causaPaciente}}</td>
-                        <td>{{ $incap->diasIncapacidad}}</td>
-                        <td>{{ $incap->fechaIncapacidad}}</td>
-                        <td>{{ $incap->horaIncapacidad}}</td>
+                        <td>{{ $paci->idIncapacidad}}</td>
+                        <td>{{ $paci->nombre}}</td>
+                        <td>{{ $paci->apellido}}</td>
+                        <td>{{ $paci->sexo}}</td>
+                        <td>{{ $paci->telefono}}</td>
+                        <td>{{ $paci->causaPaciente}}</td>
+                        <td>{{ $paci->diasIncapacidad}}</td>
+                        <td>{{ $paci->fechaIncapacidad}}</td>
+                        <td>{{ $paci->horaIncapacidad}}</td>
                         <td>
-                            <a href="{{URL::action('IncapacidadController@edit', $incap->idIncapacidad)}}"><button class="btn btn-info">Editar</button></a>
-                            <a href="{{URL::action('IncapacidadController@show', $incap->idIncapacidad)}}"><button class="btn btn-warning" >Reporte</button></a>
-                            <a href="" data-target="#modal-delete-{{$incap->idIncapacidad}}" data-toggle="modal"><button class="btn btn-danger">Eliminar</button></a>
+                            <a href="{{URL::action('IncapacidadController@edit', $paci->idIncapacidad)}}"><button class="btn btn-info">Editar</button></a>
+                           
+                            <a type="button" href="{{URL::action('IncapacidadController@show', $paci->idIncapacidad)}}" value="Reporte" target="_blank" onClick="document.formulario.action='verPDF.php'; document.formuario.submit();"><button class="btn btn-warning">Reporte</button></a></a>
+
+
+                            <a href="" data-target="#modal-delete-{{$paci->idIncapacidad}}" data-toggle="modal"><button class="btn btn-danger">Eliminar</button></a>
                         </td>
                     </tr>
                     @include('clinica.incapacidad.modal')
                     @endforeach
                 </table>
             </div>
-            {{$incapacidad->render()}}
+            {{$pacientes->render()}}
             <hr>
             &nbsp
             <a href="{{ url('/clinica') }}"><button class="btn btn-danger">Regresar</button></a>

@@ -18,37 +18,39 @@
             {{Form::token()}}
 
     		
-            <div class="form-group">
-            <label for="nombrePaciente">Nombre de Paciente</label>  
-            <select name ="nombrePaciente" id="input" class="form-control" >
-                <option value="{{$incapacidad->nombrePaciente}}">{{$incapacidad->nombrePaciente}}</option>>
-             @foreach($pacientes as $paciente)
-                <?php if( ($paciente['nombre']) != ($incapacidad->nombrePaciente) ): ?>
-                <option value="{{$paciente['nombre']}}"> {{$paciente['nombre']}} </option>
-                <?php endif; ?>
-                
-             @endforeach  
+        
+             <div class="form-group">
+                        <label for="idPaciente" >Nombres, Apellidos del Paciente </label>
+                      
+                            <select name= "idPaciente" id="idPaciente" class="form-control">
+                        <option selected value="" >Seleccione una opcion</option>
+                        @foreach ($pacientes as $paciente)
+                            <option value="{{$paciente ['idPaciente']}}" <?php if( ($paciente ['idPaciente'])==$incapacidad->idPaciente) echo "selected" ?>>{{$paciente ['nombre']}} , {{$paciente ['apellido']}}
+                            </option>
+                        @endforeach 
+                        </select>
+                          
+                    </div>
 
-             </select>
-            </div>
+            
 
-            <div class="form-group">
-            <label for="medicoAsignado">Medico Asignado</label>  
-            <select name ="medicoAsignado" id="input" class="form-control">
-                <option value="{{$incapacidad->medicoAsignado}}">{{$incapacidad->medicoAsignado}}</option>>
-             @foreach($medicos as $medico)
-                <?php if( ($medico['nombre']) != ($incapacidad->medicoAsignado) ): ?>
-                <option value="{{$medico['nombre']}}"> {{$medico['nombre']}} </option>
-                <?php endif; ?>                
-                
-             @endforeach  
-
-             </select>
-             </div>
               <div class="form-group">
-                <label for="edadPaciente">Edad del Paciente </label>
-                    <input type="number" name="edadPaciente" min="0" max="150" step="1" value="{{$incapacidad->edadPaciente}}">
+                    <label for="idMedico" >Medico Asignado</label>
+                    
+                        <select name= "idMedico" id="idMedico" class="form-control">
+                        <option selected value="" >Seleccione una opcion</option>
+                            @foreach ($medicos as $medico)
+                            <option value="{{$medico ['idMedico']}}" <?php if( ($medico['idMedico'])==$incapacidad->idMedico) echo "selected" ?>>{{$medico ['nombre']}}
+                            </option>
+                            @endforeach 
+                        </select>
+                    
+                    
                 </div>
+
+
+
+             
              
             <div class="form-group">
                         <label for="causaPaciente" class="required">Causa de la Incapacidad</label>
