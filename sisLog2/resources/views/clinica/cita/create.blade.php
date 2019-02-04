@@ -18,8 +18,19 @@
             {{Form::token()}}
 
             <div class="form-group">
-                <label for="nombrePaciente" class="required">Nombre del Paciente</label>
-                <input type="text" value="{{old('nombrePaciente')}}"name="nombrePaciente" class="form-control" placeholder="Nombre Paciente...">  
+            <label for="nombrePaciente">Nombre de Paciente</label>  
+            <select name ="nombrePaciente" id="input" class="form-control" value="{{old('nombrePaciente')}}">
+                <option value="">--Escoja el Nombre del Paciente--</option>>
+             @foreach($pacientes as $paciente)
+                <option value="{{$paciente['nombre']}},{{$paciente ['apellido']}}"> {{$paciente['nombre']}},{{$paciente['apellido']}}
+                </option>
+             @endforeach  
+
+
+
+
+
+             </select>
             </div>
             <!-- Seleccion de Medico   -->
             <div class="form-group">

@@ -16,9 +16,21 @@
             {!!Form::model($cita,['method'=>'PATCH','action'=>array('CitaController@update',$cita->id)])!!}
             {{Form::token()}}
 
-            <div class="form-group">
-                <label for="nombrePaciente" class="required">Nombre del Paciente</label>
-                <input type="text" value="{{ $cita->nombrePaciente }}" name="nombrePaciente" class="form-control" placeholder="Nombre Paciente...">  
+             <div class="form-group">
+            <label for="nombrePaciente">Nombre de Paciente</label>  
+            <select name ="nombrePaciente" id="input" class="form-control">
+                <option value="{{$cita->nombrePaciente}}">{{$cita->nombrePaciente}}</option>>
+             @foreach($pacientes as $paciente)
+                <?php if( ($paciente['nombre']) != ($cita->nombrePaciente) ): ?>
+                <option value="{{$paciente['nombre']}},{{$paciente['apellido']}}"> {{$paciente['nombre']}},{{$paciente['apellido']}} </option>
+                <?php endif; ?>
+                
+
+
+
+             @endforeach  
+
+             </select>
             </div>
             <!-- Seleccion de Medico   -->
             <div class="form-group">

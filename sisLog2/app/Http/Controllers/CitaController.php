@@ -35,8 +35,10 @@ class CitaController extends Controller
             ->paginate(4);
             
             $citaC = Cita::all();
+            $pacientes=Paciente::all();
+
             
-            return view('clinica.cita.index', ["citas"=>$citas, "citaC"=>$citaC,"medicos"=>$medicos, "searchText"=>$query]);
+            return view('clinica.cita.index', ["citas"=>$citas, "citaC"=>$citaC,"medicos"=>$medicos, "searchText"=>$query],compact('pacientes'));
         }  
 
     }
@@ -48,9 +50,9 @@ class CitaController extends Controller
      */
     public function create()
     {
-        
+        $pacientes=Paciente::all();
         $medicos = Medico::all();
-        return view("clinica.cita.create", ["medicos"=>$medicos]);
+        return view("clinica.cita.create", ["medicos"=>$medicos],["pacientes"=>$pacientes]);
     }
 
     /**
@@ -70,11 +72,11 @@ class CitaController extends Controller
         $cita->reservacionCita=$request->get('reservacionCita');
 
         if($cita->tipoCita=="consulta general"){
-            $cita->color="#8be55e";
+            $cita->color="#e55e5e";
         }elseif($cita->tipoCita=="oftalmologia"){
-                $cita->color="#dff210";
+                $cita->color="#0fc1f1";
             }elseif ($cita->tipoCita=="dermatologia") {
-                $cita->color="#0ff1d3";
+                $cita->color="#740ff0";
             }elseif ($cita->tipoCita=="control de embarazo") {
                 $cita->color="#ef9eee";
             }elseif ($cita->tipoCita=="control de niño") {
@@ -112,7 +114,7 @@ class CitaController extends Controller
     {
         $cita=Cita::findOrFail($id);
         $pdf = PDF::loadView("clinica.cita.vista",["cita"=>$cita]);
-        return $pdf->stream($cita->nombrePaciente);
+        return $pdf->stream($cita->idCita);
         //return view("clinica.paciente.show",["paciente"=>Paciente::findOrFail($id)]);
     }
 
@@ -125,8 +127,8 @@ class CitaController extends Controller
     public function edit($id)
     {
         $medicos = Medico::all();
-        
-       return view("clinica.cita.edit",["cita"=>Cita::findOrFail($id)],["medicos"=>$medicos]);
+        $pacientes=Paciente::all();
+       return view("clinica.cita.edit",["cita"=>Cita::findOrFail($id)],compact('medicos','pacientes'));
       
     
     }
