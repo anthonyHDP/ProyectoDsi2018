@@ -2,7 +2,8 @@
 @section ('contenido')
    <div class="row">
         <div class="col-lg-10 col-md-6 col-sm-6 col-xs-12">
-            <h3>Crear Nueva Consulta</h3>
+            <h2 align="center">Crear Nueva Consulta</h2>
+            <h3>Datos Generales</h3>
             <hr>
             @if (count($errors)>0)
             <div class="alert alert-danger">
@@ -65,7 +66,7 @@
 <hr>
 
 
-<h4>Historia Clinica</h4>
+<h3>Historia Clinica</h3>
 <hr>
     <div class="form-horizontal">
         <div class="col-sm-6">
@@ -118,7 +119,7 @@
         
     </div>
 <HR>
-<h4>Resultados</h4>
+<h3>Resultados</h3>
 <hr>        
             
         <div class="form-horizontal">

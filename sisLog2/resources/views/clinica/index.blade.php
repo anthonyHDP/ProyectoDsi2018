@@ -1,6 +1,6 @@
 @extends ('layouts.admin')
 @section ('contenido')
-    
+    <h1 align="center" > Sistema Informatico para la automatización de procedimientos de la Clinica Medica Genesis</h1>
 
     <div class="row">
         <div class="col-lg-4">

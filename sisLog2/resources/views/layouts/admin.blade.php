@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Clinica Betel</title>
+    <title>Clinica Medica Genesis</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -29,9 +29,9 @@
         <!-- Logo -->
         <a href="{{url('home')}}" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
-          <span class="logo-mini"><b>CM</b>B</span>
+          <span class="logo-mini"><b>CM</b>G</span>
           <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg"><b>Clinica Betel</b></span>
+          <span class="logo-lg"><b>Clinica Genesis</b></span>
         </a>
 
         <!-- Header Navbar: style can be found in header.less -->
@@ -88,7 +88,7 @@
             
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-laptop"></i>
+                <i class="fa fa-user"></i>
                 <span>Paciente</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
@@ -97,15 +97,28 @@
                 <!--<li><a href="#"><i class="fa fa-circle-o"></i> Registro de Medico</a></li>-->
               </ul>
             </li>
+
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-th"></i>
+                <i class="fa fa-heartbeat"></i>
+                <span>Doctores</span>
+                 <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="{{url('clinica/medico')}}"><i class="fa fa-circle-o"></i>Gestión de Medico</a></li>
+                <li><a href="#"><i class="fa fa-circle-o"></i> Proveedores</a></li>
+              </ul>
+            </li>
+
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-money"></i>
                 <span>Pago Consulta</span>
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="{{  url('clinica/pago') }} "><i class="fa fa-circle-o"></i> Pagos pendientes</a></li>
-                <li><a href=" {{ url('clinica/pago/show') }} "><i class="fa fa-circle-o"></i> Estadisticas</a></li>
+                <li><a href="{{  url('clinica/pago') }} "><i class="fa fa-ban"></i> Pagos pendientes</a></li>
+                <li><a href=" {{ url('clinica/pago/show') }} "><i class="fa fa-signal"></i> Estadisticas</a></li>
               </ul>
             </li>
             <!--
@@ -175,9 +188,9 @@
           
           <div class="row">
             <div class="col-md-12">
-              <div class="box">
+              <div class="box box-info">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Sistema de Gestion de Procedimientos de la Clinica Betel</h3>
+                  <h3 class="box-title">Sistema Informatico para la automatización de procedimientos de la Clinica Medica Genesis</h3>
                   <div class="box-tools pull-right">
                     <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                     
