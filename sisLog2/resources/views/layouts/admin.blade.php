@@ -21,7 +21,7 @@
     <link rel="shortcut icon" href="{{asset('img/favicon.ico')}}">
 
   </head>
-  <body class="hold-transition skin-blue sidebar-mini">
+  <body class="hold-transition skin-green-light sidebar-mini">
     <div class="wrapper">
 
       <header class="main-header">
