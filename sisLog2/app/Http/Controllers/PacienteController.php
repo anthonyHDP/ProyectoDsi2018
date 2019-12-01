@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\Redirect;
 use sisLog2\Http\Requests\PacienteFormRequest;
 use DB;
 
+use Carbon\Carbon;
+use flash;
+use Session;
+
 class PacienteController extends Controller
 {
     //
@@ -21,7 +25,7 @@ class PacienteController extends Controller
 
     public function index(Request $request)
     {
-        if ($request)
+        /*if ($request)
         {
             $query=trim($request->get('searchText'));
             $pacientes=DB::table('paciente')->where('apellido','LIKE','%'.$query.'%')
@@ -35,8 +39,22 @@ class PacienteController extends Controller
             ->orderBy('idPaciente','desc')
             ->paginate(7);
             return view('clinica.paciente.index',["pacientes"=>$pacientes,"searchText"=>$query]);
-        }
+        }*/
+         if ($request)
+        {
+
+            $start = $request->from_date;
+            $end = $request->to_date;
+            if($end <$start){
+            Session::flash('mensaje', 'la fecha de inicio debe ser menor o igual a la fecha final');
+            return back();
+            }
+            $anys = DB::table('paciente')->whereBetween('FECHAPACIENTE', [$start, $end])->get();
+            Session::flash('anys', $anys);
+
+            return view('clinica.paciente.index',["anys"=>$anys,"fechaInicial"=>$start,"fechaFinal"=>$end]);
     }
+}
 
     public function create()
     {
@@ -46,6 +64,8 @@ class PacienteController extends Controller
     public function store(PacienteFormRequest $request)
     {
     	$paciente = new Paciente;
+        $hoy=Carbon::now();
+
     	$paciente->nombre=$request->get('nombre');
     	$paciente->apellido=$request->get('apellido'); 
     	$paciente->telefono=$request->get('telefono');
@@ -54,6 +74,7 @@ class PacienteController extends Controller
         $paciente->fechaNacimiento=$request->get('fechaNacimiento');
         $paciente->sexo=$request->get('sexo');
         $paciente->estadoCivil=$request->get('estadoCivil');
+        $paciente->FECHAPACIENTE=$hoy;
     	if($paciente->save()){
 
             return back()->with('msj','Datos Guardados');
@@ -68,12 +89,20 @@ class PacienteController extends Controller
     	return Redirect::to('clinica/paciente');
     }
 
-    public function show($id)
+    /*public function show($id)
     {
         $paciente=Paciente::findOrFail($id);
         $pdf = PDF::loadView("clinica.paciente.vista",["paciente"=>$paciente]);
         return $pdf->stream($paciente->nombre);
     	//return view("clinica.paciente.show",["paciente"=>Paciente::findOrFail($id)]);
+    }*/
+
+    public function show($id)
+    {
+        $anys = Session::get('anys');
+        Session::flash('anys', $anys);
+        $pdf = PDF::loadView('clinica.paciente.vista2',compact('anys'));
+        return $pdf->stream('ReporteExpedientes.pdf');
     }
 
     public function edit($id)

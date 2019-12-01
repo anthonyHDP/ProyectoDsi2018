@@ -24,9 +24,10 @@ Route::get('/home', 'HomeController@index');
 
 Route::group(['middleware' => 'usuarioAdmin'], function () {
 	Route::resource('seguridad/usuario','UsuarioController');
+	Route::resource('seguridad/bitacora','BitacoraController');
 
 	//para hacer un grupo de rutas de recursos con las peticiones index,update,edit,cretae,etc
-	Route::resource('clinica/medico','MedicoController');
+	//Route::resource('clinica/medico','MedicoController');
 	Route::resource('clinica/estrategico','EstrategicoController');
 
     
@@ -48,6 +49,10 @@ Route::group(['middleware' => 'usuarioDoctor'], function () {
 
 	//para hacer un grupo de rutas de recursos con las peticiones index,update,edit,cretae,etc
 	Route::resource('clinica/paciente','PacienteController');
+	
+Route::resource('clinica/medico','MedicoController');
+Route::resource('clinica/reportes','reportesController@index');
+
 	Route::resource('clinica/examen','ExamenController');
 	Route::resource('clinica/incapacidad','IncapacidadController');
 	Route::resource('clinica/cita','CitaController');

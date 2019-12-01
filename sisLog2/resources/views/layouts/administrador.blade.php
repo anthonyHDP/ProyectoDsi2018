@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Clinica Medica Betel</title>
+    <title>Clinica Medica Genesis</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -27,9 +27,9 @@
         <!-- Logo -->
         <a href="{{url('home')}}" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
-          <span class="logo-mini"><b>CM</b>B</span>
+          <span class="logo-mini"><b>CM</b>G</span>
           <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg"><b>Clinica Betel</b></span>
+          <span class="logo-lg"><b>Clinica Genesis</b></span>
         </a>
 
         <!-- Header Navbar: style can be found in header.less -->
@@ -55,8 +55,8 @@
                     
                     <p>
                       {{ Auth::user()->email }}
-                      <small>Clinica Betel</small>
-                      <small>DSI115</small>
+                      <small>Clinica Genesis</small>
+                      <small>API115</small>
                     </p>
                   </li>
                   
@@ -164,7 +164,7 @@
             <div class="col-md-12">
               <div class="box">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Sistema de Gestion de Procedimientos de la Clinica Betel</h3>
+                  <h3 class="box-title">Sistema Informatico para la automatización de procedimientos de la Clinica Medica Genesis</h3>
                   <div class="box-tools pull-right">
                     <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                     
@@ -195,7 +195,7 @@
         <div class="pull-right hidden-xs">
           <b>Version</b> 1.2.0
         </div>
-        <strong>Copyright &copy; 2018 <a href="http://www.faceboook.com">DiseñoIT</a>.</strong> All rights reserved.
+        <strong>Copyright &copy; 2019 <a href="http://www.faceboook.com">ApiIT</a>.</strong> All rights reserved.
       </footer>
 
       

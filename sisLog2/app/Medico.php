@@ -18,7 +18,8 @@ class Medico extends Model
     	'especialidad',
     	'telefono',
     	'correo',
-    	'direccion'
+    	'direccion',
+        'FECHAMEDICO'
     ];
 
     protected $guarded =[

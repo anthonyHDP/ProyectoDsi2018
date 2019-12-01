@@ -57,7 +57,7 @@
                     <p>
                       {{ Auth::user()->email }}
                       <small>Clinica Betel</small>
-                      <small>DSI115</small>
+                      <small>API115</small>
                     </p>
                   </li>
                   
@@ -86,6 +86,7 @@
           <ul class="sidebar-menu">
             <li class="header"></li>
             
+            
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-user"></i>
@@ -94,7 +95,7 @@
               </a>
               <ul class="treeview-menu">
                 <li><a href="{{url('clinica/paciente')}}"><i class="fa fa-circle-o"></i> Expediente de Paciente</a></li>
-                <!--<li><a href="#"><i class="fa fa-circle-o"></i> Registro de Medico</a></li>-->
+               
               </ul>
             </li>
 
@@ -106,10 +107,33 @@
               </a>
               <ul class="treeview-menu">
                 <li><a href="{{url('clinica/medico')}}"><i class="fa fa-circle-o"></i>Gestión de Medico</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> Proveedores</a></li>
               </ul>
             </li>
 
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-heartbeat"></i>
+                <span>Consulta</span>
+                 <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="{{url('clinica/consulta')}}"><i class="fa fa-circle-o"></i>Gestión de Consulta</a></li>
+              </ul>
+            </li>
+
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-heartbeat"></i>
+                <span>Reportes</span>
+                 <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="{{url('clinica/reportes')}}"><i class="fa fa-circle-o"></i>Generacion de Reportes</a></li>
+              </ul>
+            </li>
+          
+
+           <!-- Estrategico
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-money"></i>
@@ -121,6 +145,24 @@
                 <li><a href=" {{ url('clinica/pago/show') }} "><i class="fa fa-signal"></i> Estadisticas</a></li>
               </ul>
             </li>
+          
+            TACTICO
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-user"></i>
+                <span>Paciente</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="{{url('clinica/paciente')}}"><i class="fa fa-circle-o"></i> Reporte de Paciente</a></li>
+               
+              </ul>
+            </li>
+          -->
+
+
+            
+
             <!--
             <li class="treeview">
               <a href="#">

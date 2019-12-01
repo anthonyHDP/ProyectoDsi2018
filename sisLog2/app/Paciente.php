@@ -22,6 +22,7 @@ class Paciente extends Model
     	'direccion',
     	'sexo',
     	'estadoCivil',
+        'FECHAPACIENTE',
     ];
 
     protected $guarded =[

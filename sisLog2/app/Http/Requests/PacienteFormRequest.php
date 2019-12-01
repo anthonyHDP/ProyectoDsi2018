@@ -33,6 +33,7 @@ class PacienteFormRequest extends Request
             'tipoSangre' => 'required|max:50',
             'sexo' => 'required|max:50',
             'estadoCivil' => 'required|max:50',
+            
         ];
     }
 

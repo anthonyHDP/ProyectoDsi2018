@@ -1,10 +1,22 @@
 {!! Form::open(array('url'=>'clinica/medico','method'=>'GET','autocomplete'=>'of','role'=>'search')) !!}
 
-<div class="form-group">
-	<div class="input-group">
-		<input type="text" class="form-control" name="searchText" placeholder="Buscar..." value="{{$searchText}}">
-		<span class="input-group-btn">
-			<button type="submit" class="btn btn-primary">Buscar</button>
+<center>
+
+<label class="control-label" for="date">Fecha Inicial: </label>
+<input class="form-control" id="from_date" name="from_date"  value="{{$fechaInicial}}" type="date"/><br><br>
+
+<label class="control-label" for="date">Fecha Final: </label>
+<input class="form-control" id="to_date" name="to_date" value="{{$fechaFinal}}" type="date"/><br><br>
+      
+
+<button type="submit" class="btn btn-primary">Buscar</button>
+
+ <a href="{{ url('/clinica') }}"><button class="btn btn-danger">Regresar</button></a>
+
+<a href="{{ url('/tactico') }}"><button class="btn btn-success">Ayuda</button></a>
+           
+
+			</center> 
 		</span>
 	</div>
 </div>
